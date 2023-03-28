@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
+import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
   plugins: [vue()],
@@ -10,6 +11,11 @@ export default defineConfig({
     }
   },
   css: {
+    postcss: {
+      plugins: [
+        autoprefixer
+      ]
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@import "@/main.scss";`
