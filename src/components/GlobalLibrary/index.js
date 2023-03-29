@@ -1,5 +1,4 @@
-import MainHeader from "@/components/MainHeader.vue";
-
+import MainNavBar from "@/components/MainNavBar.vue"
 export default [
-    MainHeader
+    MainNavBar
 ];

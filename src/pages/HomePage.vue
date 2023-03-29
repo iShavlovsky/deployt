@@ -1,16 +1,17 @@
 <template>
   <section>
     <div class="container">
-      <MainHeader/>
+      <main-header/>
     </div>
   </section>
 </template>
 
 <script>
-
+import MainHeader from "@/components/MainHeader.vue";
 
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components: { MainHeader }
 };
 </script>
 
