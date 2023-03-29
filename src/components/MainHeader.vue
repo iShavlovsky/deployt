@@ -2,7 +2,8 @@
   <div class='example'>
     <h1> Привет </h1>
   </div>
-  <div class='header'>
+  <div class='header'
+       id="header">
     <h2> Vite </h2>
   </div>
 </template>
@@ -22,5 +23,6 @@ export default {
 
 .header {
   display: flex;
+  color: $primary-color;
 }
 </style>

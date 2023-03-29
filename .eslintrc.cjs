@@ -1,9 +1,9 @@
 module.exports = {
     root: true,
     env: {
-        // node: true,
-        // 'browser': true,
-        "es6": true
+        "es6": true,
+        "browser": true,
+        "node": true
     },
     extends: [
         'plugin:vue/vue3-essential',
@@ -22,7 +22,7 @@ module.exports = {
         'vue/html-self-closing': ['error', {
             html: {
                 void: 'never',
-                normal: 'always',
+                normal: 'never',
                 component: 'always'
             },
             svg: 'always',
