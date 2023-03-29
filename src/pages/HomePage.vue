@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container">\
+    <div class="container">
       <MainHeader/>
     </div>
   </section>

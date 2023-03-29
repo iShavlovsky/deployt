@@ -1,0 +1,31 @@
+/*------------ Montserrat ------------*/
+@font-face {
+  font-family: "Montserrat-Bold";
+  font-display: swap;
+  src : url('@/assets/fonts/Monserrat/Montserrat-Bold.woff2') format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat-SemiBold";
+  font-display: swap;
+  src : url('@/assets/fonts/Monserrat/Montserrat-SemiBold.woff2') format("woff2");
+}
+
+/*------------ Poppins ------------*/
+@font-face {
+  font-family: "Poppins-Light";
+  font-display: swap;
+  src : url('@/assets/fonts/Poppins/Poppins-Light.woff2') format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  font-display: swap;
+  src : url('@/assets/fonts/Poppins/Poppins-Medium.woff2') format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  font-display: swap;
+  src : url('@/assets/fonts/Poppins/Poppins-Regular.woff2') format("woff2");
+}
