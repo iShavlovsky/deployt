@@ -1,22 +1,70 @@
 /*----------------------- main styles ------------------------------ */
+
+/* scrollBar */
+::-webkit-scrollbar,
+html ::-webkit-scrollbar {
+  height: em(5);
+  width: em(5);
+}
+
+::-webkit-scrollbar-track,
+html ::-webkit-scrollbar-track{
+  background: $primary-white;
+}
+
+::-webkit-scrollbar-thumb,
+html ::-webkit-scrollbar-thumb{
+  background-color: $primary-black;
+  border-radius: em(1)
+}
+
+/* general */
 body {
   font-size: 1.1111111111111112vw;
+  background-color: $primary-black;
+  color: $primary-black;
 }
 
 section {
+  position: relative;
   width: 100%;
-  transition: all .2s;
+  //transition: all .2s;
 }
 
 .container {
   margin: 0;
   max-width: em(1440);
+  padding-left: em(40);
+  padding-right: em(40);
 }
 
 a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+.logo{
+  font-family: "Montserrat-Bold", serif;
+  font-style: normal;
+  font-size: em(16);
+  font-weight: 700;
+  line-height: 100%;
+  color: $primary-white;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.error{
+  padding: em(32);
+  p{
+    @include h3-small( $color:$error-red)
+  }
+}
 /*----------------------- mobile styles ------------------------------ */
 @include mobile {
   section {
@@ -25,6 +73,8 @@ a {
 
   .container {
     max-width: px(375);
+    padding-left: em(16);
+    padding-right: em(16);
   }
 
 

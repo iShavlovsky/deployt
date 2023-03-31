@@ -2,7 +2,8 @@
   <header class="nav-bar">
     <nav class='nav'>
       <div class="nav_logo-w">
-
+        <a class="logo"
+           href="#">deploy t/</a>
       </div>
       <ul class="menu">
         <li class="menu_item">
@@ -44,15 +45,21 @@ export default {
 
   .nav{
     width: 100%;
-
+    display: flex;
+    justify-content: space-between;
     .menu{
-      width: 100%;
+      width: auto;
       display: flex;
       flex-direction: row;
       align-items: stretch;
 
       .menu_item{
         margin-right: em(32);
+
+        a{
+          @include txt-button();
+          color: $primary-white;
+        }
       }
     }
   }

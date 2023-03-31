@@ -1,13 +1,78 @@
 <template>
-  <section>
+  <section class="section">
+    <div class="header-animation-w">
+      <img src="../assets/img/main.png"
+           alt="decorative">
+    </div>
     <div class="container">
-      <div class="card-w">
-        <article v-for="feature in features.data"
-                 :key="feature.id"
-                 class="card-specialty">
-          <h2 class="card-specialty_name">{{ feature.attributes.Name }}</h2>
-          <p class="card-specialty_description">{{ feature.attributes.description }}</p>
-        </article>
+      <header class="main-header">
+        <h1 class="main-h1">
+          We are <span>software engineers</span>
+        </h1>
+        <div class="main-header_description-w">
+          <div class="main-header_description-text">
+            <p>Transform your ideas into digital realities with our skilled team, delivering cutting-edge solutions with precision and passion.
+            </p>
+          </div>
+          <a href="#"
+             class="main-header_btn-link-w">
+            <span>Let's make some wild stuff</span>
+          </a>
+        </div>
+      </header>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <h2>what we do</h2>
+          <div class="heading-section_w">
+            <div class="heading-section_description-content">
+              <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you covered.</p>
+            </div>
+            <div class="error"
+                 v-if="error">
+              <p>{{ error }}</p>
+            </div>
+            <div v-else
+                 class="cards-w">
+              <article v-for="feature in apiUrls[0].content"
+                       :key="feature.id"
+                       class="card">
+                <h3 class="card_name">{{ feature.attributes.heading }}</h3>
+                <p class="card_description">{{ feature.attributes.description }}</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <h2>tech stack</h2>
+          <div>
+            <div class="heading-section_description-content">
+              <p>Bring your ideas to life with our expert development team. We craft modern websites and apps using the latest frameworks and tools, so your business can thrive in the digital domain.</p>
+            </div>
+            <div class="error"
+                 v-if="error">
+              <p>{{ error }}</p>
+            </div>
+
+            <div v-else>
+              <u-i-accordion v-for="(dd, ) in apiUrls[1].content"
+                             :key="dd.id"
+
+                             :heading="dd.attributes.heading"
+                             :description="dd.attributes.description"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -15,34 +80,138 @@
 
 <script>
 import ky from "ky-universal";
+import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
 
 export default {
   name: 'HomePage',
+  components: {UIAccordion},
   data() {
     return {
-      features: []
+      apiUrls:[
+        { url: 'what-we-dos', content:[] },
+        { url: 'tech-stacks', content:[] }
+      ],
+      error: null
     };
   },
   async mounted() {
     const api = ky.create({
       prefixUrl: 'http://localhost:1337/api/'
     });
-    try {
-      this.features = await api
-          .get('specialties')
-          .json();
-      console.log(this.features.data);
-    } catch (err) {
-      console.log(err.message);
+    let results;
+    for (const i of this.apiUrls) {
+      try {
+        results = await api
+            .get(i.url)
+            .json();
+        i.content = results.data
+        console.log(i.content);
+      } catch (err) {
+        this.error = err;
+        console.log(err.message);
+      }
     }
+
+  },
+  methods: {
   }
 };
 </script>
 <style lang="scss">
-.card-w {
-  max-width: em(300);
-  background-color: $accent-blue;
+.header-animation-w{
+  position: absolute;
+  max-height: 70vh;
+  overflow: hidden;
+  z-index: -1;
 }
+
+.main-header{
+  position: relative;
+  padding-top: em(365);
+
+  .main-h1{
+    @include main-h1();
+
+    span {
+      color: $primary-white;
+      white-space: nowrap;
+    }
+  }
+  .main-header_description-w {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    margin-top: em(20);
+
+    .main-header_description-text{
+      max-width: em(394);
+      margin-right: em(82);
+
+      p {
+        @include description-low()
+      }
+    }
+
+    .main-header_btn-link-w{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: em(16) em(110) em(16) em(110);
+      @include border-white();
+      span{
+        @include txt-button()
+      }
+    }
+  }
+}
+.content-w{
+
+  .heading-section{
+    padding-top: em(200);
+    display: flex;
+    gap: em(90);
+    justify-content: space-between;
+
+    h2{
+      @include h2();
+      white-space: nowrap;
+    }
+    .heading-section_description-content{
+      max-width: em(870);
+      margin-bottom: em(95);
+
+      p{
+        @include description-hide();
+      }
+    }
+
+    .cards-w {
+      display: grid;
+      grid-template-columns: em(394) em(394);
+      grid-template-rows: auto auto;
+      gap: 90px 90px;
+
+      .card{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .card_name{
+          @include h3-small();
+        }
+
+        .card_description{
+          margin-top: em(16);
+          @include txt-body()
+        }
+      }
+    }
+  }
+}
+
 @include mobile {
   .card-w {
     max-width: px(150);

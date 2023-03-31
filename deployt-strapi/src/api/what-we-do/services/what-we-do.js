@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * specialty service
+ * what-we-do service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::specialty.specialty');
+module.exports = createCoreService('api::what-we-do.what-we-do');
