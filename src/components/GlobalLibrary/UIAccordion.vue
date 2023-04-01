@@ -1,10 +1,18 @@
 <template>
   <div class="dd-w">
     <article class="dd"
+             ref="dd"
              :class="{ 'active': active }">
       <div @click="openAccordion($event)"
-           class="dd_head">
+           class="dd_head"
+           ref="dd_head">
         <h3 class="dd_name">{{ heading }}</h3>
+        <div class="dd_btn">
+          <div class="dd_btn-line"
+               ref="dd_btnLine1"></div>
+          <div class="dd_btn-line"
+               ref="dd_btnLine2"></div>
+        </div>
       </div>
       <div class="dd_body"
            ref="dd_body">
@@ -37,11 +45,42 @@ export default {
   methods: {
     openAccordion(e) {
       e.preventDefault();
-      const elBody = this.$refs.dd_body
+
+      const time = 0.2;
+      const white = '#F9FEFF'
+      const black = '#131313'
+
+      const el = this.$refs.dd;
+      // const elHead = this.$refs.dd_head;
+      const elBody = this.$refs.dd_body;
+      const line1 = this.$refs.dd_btnLine1;
+      const line2 = this.$refs.dd_btnLine2;
+
       if (this.active === false) {
 
+        gsap.to(el, {
+          duration: time,
+          backgroundColor: white,
+          color: black,
+          ease: Power0.easeIn
+        });
+
+        gsap.to(line1, {
+          duration: time,
+          backgroundColor: black,
+          rotateZ: 45,
+          ease: Power0.easeIn
+        });
+
+        gsap.to(line2, {
+          duration: time,
+          backgroundColor: black,
+          rotateZ: -45,
+          ease: Power0.easeIn
+        });
+
         gsap.to(elBody, {
-          duration: 0.2,
+          duration: time,
           height: elBody.scrollHeight,
           opacity: 1,
           ease: Power0.easeIn
@@ -50,8 +89,30 @@ export default {
         this.active = true
 
       } else {
+
+        gsap.to(el, {
+          duration: time,
+          backgroundColor: black,
+          color: white,
+          ease: Power0.easeIn
+        });
+
+        gsap.to(line1, {
+          duration: time,
+          backgroundColor: white,
+          rotateZ: 0,
+          ease: Power0.easeIn
+        });
+
+        gsap.to(line2, {
+          duration: time,
+          backgroundColor: white,
+          rotateZ: 0,
+          ease: Power0.easeIn
+        });
+
         gsap.to(elBody, {
-          duration: 0.2,
+          duration: time,
           height: 0,
           opacity: 0,
           ease: Power0.easeIn
@@ -74,9 +135,12 @@ export default {
   .dd{
     transition: height 1s ease;
     max-width: em(870);
-    background-color: $primary-white;
+    background-color: $primary-black;
     padding: em(0) em(32) em(0) em(32);
     margin-bottom: em(2);
+    border: 2px solid $primary-white;
+    color: $primary-white;
+
     &.active {
       .dd_head{
         transition: all .1s;
@@ -88,9 +152,30 @@ export default {
       padding: em(24) em(0) em(24) em(0);
       border-bottom: none;
       cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+
 
       .dd_name{
-        @include h3-small($color:$primary-black);
+        @include h3-small();
+      }
+
+      .dd_btn{
+        width: em(30);
+        height: em(30);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .dd_btn-line{
+          width: 100%;
+          height: em(3);
+          position: absolute;
+          background-color: $primary-white;
+        }
       }
     }
 
@@ -102,7 +187,7 @@ export default {
         padding: em(24) em(0) em(56) em(0);
         white-space: break-spaces;
         overflow-wrap: break-word;
-        @include txt-body($color:$primary-black)
+        @include txt-body()
       }
     }
   }

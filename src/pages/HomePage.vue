@@ -62,15 +62,28 @@
                  v-if="error">
               <p>{{ error }}</p>
             </div>
-
             <div v-else>
               <u-i-accordion v-for="(dd, ) in apiUrls[1].content"
                              :key="dd.id"
-
                              :heading="dd.attributes.heading"
                              :description="dd.attributes.description"
               />
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <h2>our work</h2>
+          <div>
+            <div class="heading-section_description-content">
+              <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -128,6 +141,7 @@ export default {
 .main-header{
   position: relative;
   padding-top: em(365);
+  color: $primary-white;
 
   .main-h1{
     @include main-h1();
@@ -160,6 +174,7 @@ export default {
       flex-direction: row;
       padding: em(16) em(110) em(16) em(110);
       @include border-white();
+      color: $primary-white;
       span{
         @include txt-button()
       }
@@ -173,6 +188,7 @@ export default {
     display: flex;
     gap: em(90);
     justify-content: space-between;
+    color: $primary-white;
 
     h2{
       @include h2();
@@ -198,6 +214,7 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        color: $primary-white;
 
         .card_name{
           @include h3-small();
@@ -213,9 +230,5 @@ export default {
 }
 
 @include mobile {
-  .card-w {
-    max-width: px(150);
-    background-color: $accent-yellow-green;
-  }
 }
 </style>

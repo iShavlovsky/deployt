@@ -62,7 +62,8 @@ img {
 .error{
   padding: em(32);
   p{
-    @include h3-small( $color:$error-red)
+    @include h3-small();
+    color: $error-red;
   }
 }
 /*----------------------- mobile styles ------------------------------ */
