@@ -1,21 +1,21 @@
 <template>
   <div class="dd-w">
     <article class="dd"
-             ref="dd"
-             :class="{ 'active': active }">
-      <div @click="openAccordion($event)"
+             ref="el"
+             :class="{ 'active': open.active }">
+      <div @click="open.active = !open.active"
            class="dd_head"
            ref="dd_head">
         <h3 class="dd_name">{{ heading }}</h3>
         <div class="dd_btn">
           <div class="dd_btn-line"
-               ref="dd_btnLine1"></div>
+               ref="line1"></div>
           <div class="dd_btn-line"
-               ref="dd_btnLine2"></div>
+               ref="line2"></div>
         </div>
       </div>
       <div class="dd_body"
-           ref="dd_body">
+           ref="elBody">
         <p class="dd_description">{{ description }}</p>
       </div>
     </article>
@@ -23,116 +23,161 @@
 </template>
 
 <script>
-import { gsap, Power0 } from 'gsap'
+import {ref, onMounted, watch} from "vue";
+import {gsap, Power0} from 'gsap'
+
 export default {
-  name: 'UIAccordion',
-  props: {
-    heading: {
-      type: String,
-      required: true
+    name: 'UIAccordion',
+    props: {
+        heading: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        index: {
+            type: Number,
+            required: true
+        },
+        initialOpenIndex: {
+            type: Number,
+            default: -1
+        }
     },
-    description: {
-      type: String,
-      required: true
+    setup(props) {
+        const open = ref({active: false})
+
+        const el = ref(null);
+        const elBody = ref(null);
+        const line1 = ref(null);
+        const line2 = ref(null);
+
+        let tl = gsap.timeline()
+        const time = 0.15;
+        const white = '#F9FEFF'
+        const black = '#131313'
+
+        const openAccordion = () => {
+
+            if (open.value.active === true) {
+
+                tl.to(el.value, {
+                    duration: time,
+                    backgroundColor: white,
+                    color: black,
+                    ease: Power0.easeIn
+                });
+
+                tl.to(line1.value, {
+                    duration: time,
+                    backgroundColor: black,
+                    rotateZ: 45,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(line2.value, {
+                    duration: time,
+                    backgroundColor: black,
+                    rotateZ: -45,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(elBody.value, {
+                    duration: time,
+                    height: elBody.value.scrollHeight,
+                    opacity: 1,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(line1.value, {
+                    duration: time,
+                    backgroundColor: black,
+                    rotateZ: 0,
+                    ease: Power0.easeIn
+                }, '+=0.1');
+
+                tl.to(line2.value, {
+                    duration: time,
+                    backgroundColor: black,
+                    rotateZ: 0,
+                    ease: Power0.easeIn
+                }, '<');
+
+            } else {
+                tl.to(el.value, {
+                    duration: time,
+                    backgroundColor: black,
+                    color: white,
+                    ease: Power0.easeIn
+                });
+
+                tl.to(elBody.value, {
+                    duration: time,
+                    height: 0,
+                    opacity: 0,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(line1.value, {
+                    duration: time,
+                    backgroundColor: white,
+                    rotateZ: 45,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(line2.value, {
+                    duration: time,
+                    backgroundColor: white,
+                    rotateZ: -45,
+                    ease: Power0.easeIn
+                }, '<');
+
+                tl.to(line1.value, {
+                    duration: time,
+                    backgroundColor: white,
+                    rotateZ: 90,
+                    ease: Power0.easeIn
+                }, '+=0.1');
+
+                tl.to(line2.value, {
+                    duration: time,
+                    backgroundColor: white,
+                    rotateZ: 0,
+                    ease: Power0.easeIn
+                }, '<');
+            }
+        }
+        watch(() => open.value.active, () => {
+            openAccordion();
+        })
+
+        onMounted(() => {
+            if (props.index === props.initialOpenIndex) {
+                open.value.active = true;
+                openAccordion();
+            }
+        })
+        return {
+            open,
+            el,
+            elBody,
+            line1,
+            line2
+        }
     }
-  },
-  data() {
-    return {
-      active: false
-    };
-  },
-  computed: {},
-  methods: {
-    openAccordion(e) {
-      e.preventDefault();
-
-      const time = 0.2;
-      const white = '#F9FEFF'
-      const black = '#131313'
-
-      const el = this.$refs.dd;
-      // const elHead = this.$refs.dd_head;
-      const elBody = this.$refs.dd_body;
-      const line1 = this.$refs.dd_btnLine1;
-      const line2 = this.$refs.dd_btnLine2;
-
-      if (this.active === false) {
-
-        gsap.to(el, {
-          duration: time,
-          backgroundColor: white,
-          color: black,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(line1, {
-          duration: time,
-          backgroundColor: black,
-          rotateZ: 45,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(line2, {
-          duration: time,
-          backgroundColor: black,
-          rotateZ: -45,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(elBody, {
-          duration: time,
-          height: elBody.scrollHeight,
-          opacity: 1,
-          ease: Power0.easeIn
-        });
-
-        this.active = true
-
-      } else {
-
-        gsap.to(el, {
-          duration: time,
-          backgroundColor: black,
-          color: white,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(line1, {
-          duration: time,
-          backgroundColor: white,
-          rotateZ: 0,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(line2, {
-          duration: time,
-          backgroundColor: white,
-          rotateZ: 0,
-          ease: Power0.easeIn
-        });
-
-        gsap.to(elBody, {
-          duration: time,
-          height: 0,
-          opacity: 0,
-          ease: Power0.easeIn
-        });
-
-        this.active = false
-      }
-    }
-  }
-};
+}
 </script>
 
 <style scoped lang="scss">
-.dd-w{
+.dd-w {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
 
-  .dd{
+  .dd {
     transition: height 1s ease;
     max-width: em(870);
     background-color: $primary-black;
@@ -142,13 +187,13 @@ export default {
     color: $primary-white;
 
     &.active {
-      .dd_head{
-        transition: all .1s;
+      .dd_head {
+        transition: all 150ms;
         border-bottom: 2px solid $primary-black;
       }
     }
 
-    .dd_head{
+    .dd_head {
       padding: em(24) em(0) em(24) em(0);
       border-bottom: none;
       cursor: pointer;
@@ -157,11 +202,11 @@ export default {
       justify-content: space-between;
 
 
-      .dd_name{
+      .dd_name {
         @include h3-small();
       }
 
-      .dd_btn{
+      .dd_btn {
         width: em(30);
         height: em(30);
         display: flex;
@@ -170,20 +215,25 @@ export default {
         align-items: center;
         position: relative;
 
-        .dd_btn-line{
+        :first-child {
+          transform: rotateZ(90deg);
+        }
+
+        .dd_btn-line {
           width: 100%;
           height: em(3);
           position: absolute;
           background-color: $primary-white;
+
         }
       }
     }
 
-    .dd_body{
+    .dd_body {
       height: 0;
       overflow: hidden;
 
-      .dd_description{
+      .dd_description {
         padding: em(24) em(0) em(56) em(0);
         white-space: break-spaces;
         overflow-wrap: break-word;

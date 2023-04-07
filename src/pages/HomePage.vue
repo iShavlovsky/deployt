@@ -11,7 +11,8 @@
         </h1>
         <div class="main-header_description-w">
           <div class="main-header_description-text">
-            <p>Transform your ideas into digital realities with our skilled team, delivering cutting-edge solutions with precision and passion.
+            <p>Transform your ideas into digital realities with our skilled team, delivering cutting-edge
+              solutions with precision and passion.
             </p>
           </div>
           <a href="#"
@@ -29,7 +30,8 @@
           <h2>what we do</h2>
           <div class="heading-section_w">
             <div class="heading-section_description-content">
-              <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you covered.</p>
+              <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you
+                covered.</p>
             </div>
             <div class="error"
                  v-if="error">
@@ -56,18 +58,21 @@
           <h2>tech stack</h2>
           <div>
             <div class="heading-section_description-content">
-              <p>Bring your ideas to life with our expert development team. We craft modern websites and apps using the latest frameworks and tools, so your business can thrive in the digital domain.</p>
+              <p>Bring your ideas to life with our expert development team. We craft modern websites and
+                apps using the latest frameworks and tools, so your business can thrive in the digital
+                domain.</p>
             </div>
             <div class="error"
                  v-if="error">
               <p>{{ error }}</p>
             </div>
             <div v-else>
-              <u-i-accordion v-for="(dd, ) in apiUrls[1].content"
+              <u-i-accordion v-for="(dd, index) in apiUrls[1].content"
                              :key="dd.id"
                              :heading="dd.attributes.heading"
                              :description="dd.attributes.description"
-              />
+                             :index="index"
+                             :initialOpenIndex="0"/>
             </div>
           </div>
         </div>
@@ -92,58 +97,58 @@
 </template>
 
 <script>
+import {ref, onMounted} from "vue";
 import ky from "ky-universal";
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
 
 export default {
-  name: 'HomePage',
-  components: {UIAccordion},
-  data() {
-    return {
-      apiUrls:[
-        { url: 'what-we-dos', content:[] },
-        { url: 'tech-stacks', content:[] }
-      ],
-      error: null
-    };
-  },
-  async mounted() {
-    const api = ky.create({
-      prefixUrl: 'http://localhost:1337/api/'
-    });
-    let results;
-    for (const i of this.apiUrls) {
-      try {
-        results = await api
-            .get(i.url)
-            .json();
-        i.content = results.data
-        console.log(i.content);
-      } catch (err) {
-        this.error = err;
-        console.log(err.message);
-      }
-    }
+    components: {UIAccordion},
+    setup() {
+        let apiUrls = ref([
+            {url: 'what-we-dos', content: []},
+            {url: 'tech-stacks', content: []}
+        ])
+        let error = ref(null)
+        const api = ky.create({
+            prefixUrl: 'http://localhost:1337/api/'
+        });
 
-  },
-  methods: {
-  }
-};
+        onMounted(async () => {
+            let results;
+            for (const i of apiUrls.value) {
+                try {
+                    results = await api
+                        .get(i.url)
+                        .json();
+                    i.content = results.data
+                    console.log(i.content);
+                } catch (err) {
+                    error.value = err;
+                    console.log(err.message);
+                }
+            }
+        })
+        return {
+            apiUrls,
+            error
+        }
+    }
+}
 </script>
 <style lang="scss">
-.header-animation-w{
+.header-animation-w {
   position: absolute;
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
 }
 
-.main-header{
+.main-header {
   position: relative;
   padding-top: em(365);
   color: $primary-white;
 
-  .main-h1{
+  .main-h1 {
     @include main-h1();
 
     span {
@@ -151,6 +156,7 @@ export default {
       white-space: nowrap;
     }
   }
+
   .main-header_description-w {
     width: 100%;
     display: flex;
@@ -158,7 +164,7 @@ export default {
     align-items: stretch;
     margin-top: em(20);
 
-    .main-header_description-text{
+    .main-header_description-text {
       max-width: em(394);
       margin-right: em(82);
 
@@ -167,7 +173,7 @@ export default {
       }
     }
 
-    .main-header_btn-link-w{
+    .main-header_btn-link-w {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -175,30 +181,34 @@ export default {
       padding: em(16) em(110) em(16) em(110);
       @include border-white();
       color: $primary-white;
-      span{
-        @include txt-button()
+
+      span {
+        @include txt-button();
+        text-transform: uppercase;
       }
     }
   }
 }
-.content-w{
 
-  .heading-section{
+.content-w {
+
+  .heading-section {
     padding-top: em(200);
     display: flex;
     gap: em(90);
     justify-content: space-between;
     color: $primary-white;
 
-    h2{
+    h2 {
       @include h2();
       white-space: nowrap;
     }
-    .heading-section_description-content{
+
+    .heading-section_description-content {
       max-width: em(870);
       margin-bottom: em(95);
 
-      p{
+      p {
         @include description-hide();
       }
     }
@@ -209,18 +219,18 @@ export default {
       grid-template-rows: auto auto;
       gap: 90px 90px;
 
-      .card{
+      .card {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
         color: $primary-white;
 
-        .card_name{
+        .card_name {
           @include h3-small();
         }
 
-        .card_description{
+        .card_description {
           margin-top: em(16);
           @include txt-body()
         }

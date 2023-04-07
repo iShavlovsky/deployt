@@ -39,9 +39,12 @@ export default {
 
 <style lang="scss">
 .nav-bar{
+  position: absolute;
+  bottom: auto;
   width: 100%;
   padding:em(16) em(40) em(16) em(40);
-  background-color: $primary-black;
+  backdrop-filter: blur(5px);
+  background-color: rgba(14, 14, 14, 0.7);
 
   .nav{
     width: 100%;
