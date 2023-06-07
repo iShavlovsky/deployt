@@ -24,7 +24,6 @@
     </div>
   </section>
   <section class="section">
-    {{contents}}
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
@@ -32,18 +31,19 @@
           <div class="heading-section_w">
             <div class="heading-section_description-content">
               <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you
-                covered.{{contents.value}}</p>
+                covered.</p>
             </div>
             <div class="error"
-            >
-
+                 v-if="error">
+              <p>{{ error }}</p>
             </div>
-            <div class="cards-w">
-              <article v-for="feature in contents"
+            <div v-else
+                 class="cards-w">
+              <article v-for="feature in apiUrls[0].content"
                        :key="feature.id"
                        class="card">
-                <h3 class="card_name">{{ feature.heading }}</h3>
-                <p class="card_description">{{ feature.description }}</p>
+                <h3 class="card_name">{{ feature.attributes.heading }}</h3>
+                <p class="card_description">{{ feature.attributes.description }}</p>
               </article>
             </div>
           </div>
@@ -51,7 +51,34 @@
       </div>
     </div>
   </section>
-
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <h2>tech stack</h2>
+          <div>
+            <div class="heading-section_description-content">
+              <p>Bring your ideas to life with our expert development team. We craft modern websites and
+                apps using the latest frameworks and tools, so your business can thrive in the digital
+                domain.</p>
+            </div>
+            <div class="error"
+                 v-if="error">
+              <p>{{ error }}</p>
+            </div>
+            <div v-else>
+              <u-i-accordion v-for="(dd, index) in apiUrls[1].content"
+                             :key="dd.id"
+                             :heading="dd.attributes.heading"
+                             :description="dd.attributes.description"
+                             :index="index"
+                             :initialOpenIndex="0"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="section">
     <div class="container">
       <div class="content-w">
@@ -69,16 +96,66 @@
   </section>
 </template>
 
-<script setup>
-import {computed, inject} from 'vue'
+<script>
+import {ref, onMounted} from "vue";
+import ky from "ky-universal";
+import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
+import { useStores } from "@/store/index.js";
 
-const stores = inject('$stores')
-const contents = computed(() => stores.content.items.value);
-stores.seo.setPage('We are software engineers', 'We are software engineers', 200)
+export default {
+    components: {UIAccordion},
+    inject: [ '$stores' ],
+    setup() {
+      let [ content ] = useStores('content');
+      content.load().then( r => console.log(r))
+        const getFieldContent =
+            '?fields[0]=heading' +
+            '&fields[1]=description'
+        const getFieldImg =
+            '?populate[img][fields][0]=name' +
+            '&populate[img][fields][1]=alternativeText' +
+            '&populate[img][fields][1]=url'
+        let apiUrls = ref([
+            {url: `what-we-dos${getFieldContent}`, content: []},
+            {url: `tech-stacks${getFieldContent}`, content: []},
+            {url: `accomplished-projects${getFieldImg}`, content: []}
+        ])
+        let error = ref(null)
+        const api = ky.create({
+            prefixUrl: 'http://localhost:1337/api/'
+        });
 
+
+        onMounted(async () => {
+
+
+            // let results;
+            // // let counter = 0
+            // for (const i of apiUrls.value) {
+            //     // counter++
+            //     try {
+            //         results = await api
+            //             .get(i.url)
+            //             .json();
+            //         // i.content.id = results.data[counter].id
+            //         // i.content = results.data[counter].attributes
+            //         i.content = results.data
+            //         // console.log(results.data[counter].id);
+            //
+            //     } catch (err) {
+            //         error.value = err;
+            //         console.log(err.message);
+            //     }
+            // }
+
+        })
+        return {
+            apiUrls,
+            error
+        }
+    }
+}
 </script>
-
-
 <style lang="scss">
 .header-animation-w {
   position: absolute;

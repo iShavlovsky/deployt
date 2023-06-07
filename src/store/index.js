@@ -1,9 +1,23 @@
-import {defineStore} from 'pinia'
+import initContentStore from './content.js'
+import initSeoStore from './seo.js'
+import { inject } from 'vue';
 
-export default defineStore('products', {
-    state() {
-        return {}
-    },
-    getters: {},
-    actions: {}
-});
+export const storesProvideKey = '$stores';
+
+export default api => {
+    let rootStore = {};
+    rootStore.content = initContentStore(rootStore, api.content);
+    rootStore.seo = initSeoStore(rootStore);
+
+    return {
+        store: rootStore,
+        install(app){
+            app.provide(storesProvideKey, rootStore);
+        }
+    }
+}
+
+export function useStores(...names){
+    let stores = inject(storesProvideKey);
+    return names.map(name => stores[name]);
+}

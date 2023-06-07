@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accomplished_projects",
+  "info": {
+    "singularName": "accomplished-project",
+    "pluralName": "accomplished-projects",
+    "displayName": "Accomplished project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Title",
+      "required": true,
+      "minLength": 3
+    },
+    "description": {
+      "type": "text",
+      "default": "description",
+      "required": true,
+      "minLength": 3
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "users": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
