@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="header-animation-w">
-      <img src="../assets/img/main.png"
+      <img src="../assets/img/main.webp"
            alt="decorative">
     </div>
     <div class="container">
@@ -32,14 +32,14 @@
           <div class="heading-section_w">
             <div class="heading-section_description-content">
               <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you
-                covered.{{contents.value}}</p>
+                covered.</p>
             </div>
             <div class="error"
             >
 
             </div>
             <div class="cards-w">
-              <article v-for="feature in contents"
+              <article v-for="feature in whatWeDos"
                        :key="feature.id"
                        class="card">
                 <h3 class="card_name">{{ feature.heading }}</h3>
@@ -51,7 +51,30 @@
       </div>
     </div>
   </section>
-
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <h2>tech stack</h2>
+          <div>
+            <div class="heading-section_description-content">
+              <p>Bring your ideas to life with our expert development team. We craft modern websites and
+                apps using the latest frameworks and tools, so your business can thrive in the digital
+                domain.</p>
+            </div>
+            <div>
+              <u-i-accordion v-for="(dd, index) in techStacks"
+                             :key="dd.id"
+                             :heading="dd.heading"
+                             :description="dd.description"
+                             :index="index"
+                             :initialOpenIndex="0"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="section">
     <div class="container">
       <div class="content-w">
@@ -71,9 +94,12 @@
 
 <script setup>
 import {computed, inject} from 'vue'
+import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
 
 const stores = inject('$stores')
-const contents = computed(() => stores.content.items.value);
+const whatWeDos = computed(() => stores.content.item('what-we-dos'));
+const techStacks = computed(() => stores.content.item('tech-stacks'));
+const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
 stores.seo.setPage('We are software engineers', 'We are software engineers', 200)
 
 </script>

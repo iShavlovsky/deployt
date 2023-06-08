@@ -5,6 +5,7 @@ import { readFileSync } from 'fs'
 
 const template = readFileSync('./dist/index.html').toString();
 const server = express();
+const port = 3000;
 
 server.use('/assets', express.static('./dist/assets'));
 server.use('/favicon.ico', express.static('./dist/favicon.ico'));
@@ -38,6 +39,7 @@ server.get('*', async function(req, resp){
 		resp.end(page);
 	})
 });
+server.listen(port, () => {
+	console.log(`Server is running at http://localhost:${port}`);
+});
 
-server.listen(3000);
-console.log('server is running...');
