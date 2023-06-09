@@ -83,9 +83,14 @@
           <div>
             <div class="heading-section_description-content">
               <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
-            </div>
-
+            </div>            
           </div>
+        </div>
+        <div>
+          <UIOurWorkCard/>
+        </div>
+        <div>
+          
         </div>
       </div>
     </div>
@@ -95,6 +100,7 @@
 <script setup>
 import {computed, inject} from 'vue'
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
+import UIOurWorkCard from "@/components/GlobalLibrary/UIOurWorkCard.vue";
 
 const stores = inject('$stores')
 const whatWeDos = computed(() => stores.content.item('what-we-dos'));
