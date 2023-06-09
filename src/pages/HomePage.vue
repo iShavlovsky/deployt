@@ -83,10 +83,39 @@
           <div>
             <div class="heading-section_description-content">
               <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
-            </div>
-
+            </div>            
           </div>
         </div>
+        <div>
+          <UIOurWorkCard/>
+        </div>
+        <div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section cta">
+    <div class="container">
+
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="content-w">
+        <div class="heading-section">
+          <div class="col-3-grid">           
+            <h2>Different things to read</h2>
+              <div class="heading-section_description-content">
+                <p>We write articles based on our own experience 
+                  and the experience of leading IT industry experts. Sometimes articles are written 
+                  by an artificial intelligence, but the articles are still edited by us.</p>
+              </div>
+          </div>          
+        </div>
+        <div class="col-3-grid">
+            <UIArticleCard/> <UIArticleCard/> <UIArticleCard/>
+          </div>
       </div>
     </div>
   </section>
@@ -95,6 +124,8 @@
 <script setup>
 import {computed, inject} from 'vue'
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
+import UIOurWorkCard from "@/components/GlobalLibrary/UIOurWorkCard.vue";
+import UIArticleCard from "@/components/GlobalLibrary/UIArticleCard.vue";
 
 const stores = inject('$stores')
 const whatWeDos = computed(() => stores.content.item('what-we-dos'));
@@ -111,6 +142,16 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
+}
+
+.section.cta {
+  display: flex;
+  height: 100vh;
+  min-height: em(700);
+  align-items: center;
+  background-image: url("../assets/img/cta_image.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .main-header {
@@ -161,6 +202,16 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 }
 
 .content-w {
+  
+  .col-3-grid {    
+    margin-top: em(32);
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: em(89);
+    grid-row-gap: em(96);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  } 
 
   .heading-section {
     padding-top: em(200);
@@ -171,12 +222,13 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
     h2 {
       @include h2();
-      white-space: nowrap;
     }
 
     .heading-section_description-content {
       max-width: em(870);
       margin-bottom: em(95);
+      grid-column-start: span 2;
+      grid-column-end: span 3;
 
       p {
         @include description-hide();

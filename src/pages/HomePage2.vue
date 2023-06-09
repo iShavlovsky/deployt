@@ -88,7 +88,7 @@
             <div class="heading-section_description-content">
               <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
             </div>
-
+            <u-i-our-work-card></u-i-our-work-card>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
 <script>
 import {ref, onMounted} from "vue";
 import ky from "ky-universal";
-import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
+import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue"; 
 import { useStores } from "@/store/index.js";
 
 export default {
