@@ -4,6 +4,7 @@ export default function content(rootStore, contentApi, baseURL) {
     const items = ref([]);
     const url = baseURL.replace('/api/', '');
     const item = key => items.value[key].map(item => ({
+                link: item.attributes.link ? item.attributes.link : '#',
                 id: item.id,
                 heading: item.attributes.heading,
                 description: item.attributes.description,

@@ -8,7 +8,6 @@
            :style="lineStyle"></div>
       <div class="spinner-line"
            :style="lineStyle"></div>
-      <!--Chrome renders little circles malformed :(-->
       <div class="spinner-circle"
            :style="circleStyle">&#9679;</div>
     </div>

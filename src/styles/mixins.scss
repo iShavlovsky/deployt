@@ -68,3 +68,12 @@
 @mixin border-white ($size: em(2), $color: $primary-white) {
   border: $size solid $color;
 }
+
+@mixin col-3-grid ($mt: em(32)){
+  margin-top: $mt;
+  display: grid;
+  grid-column-gap: em(89);
+  grid-row-gap: em(96);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}

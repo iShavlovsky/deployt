@@ -129,7 +129,7 @@ module.exports = {
         'vue/no-dupe-keys': ['error', {
             groups: []
         }],
-        'vue/component-name-in-template-casing': ['error', 'kebab-case', {
+        'vue/component-name-in-template-casing': ['error', 'PascalCase', {
             registeredComponentsOnly: true
         }],
         'comma-dangle': ['error', {
