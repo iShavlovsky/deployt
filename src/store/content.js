@@ -1,18 +1,18 @@
+import {ref} from 'vue';
 
-import { ref } from 'vue';
-
-export default function content(rootStore, contentApi) {
+export default function content(rootStore, contentApi, baseURL) {
     const items = ref([]);
-
-    const item = key => items.value[0][key].map(item => ({
+    const url = baseURL.replace('/api/', '');
+    const item = key => items.value[key].map(item => ({
                 id: item.id,
                 heading: item.attributes.heading,
-                description: item.attributes.description
+                description: item.attributes.description,
+                imgUrl: item.attributes.img ? url+item.attributes.img.data.attributes.url : null,
+                imgAlt: item.attributes.img ? item.attributes.img.data.attributes.alternativeText : null
             }));
 
-    async function load() {
-        let response = await contentApi.all();
-        items.value.push(response)
+    async function load(key) {
+        items.value = await contentApi.all(key)
         console.log(items.value)
     }
 

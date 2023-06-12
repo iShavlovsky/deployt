@@ -1,0 +1,4 @@
+PassengerNodejs /home/f/forthe65/.local/bin/node
+PassengerAppRoot /home/f/forthe65/node/HelloWorld
+PassengerAppType node
+PassengerStartupFile app.js

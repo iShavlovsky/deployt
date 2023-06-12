@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "run dev": "vite",
     "run serv": "node server.js",
     "buildAll": "npm run build:client && npm run build:server",
     "build:client": "vite build",

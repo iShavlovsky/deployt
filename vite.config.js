@@ -2,47 +2,47 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {fileURLToPath, URL} from 'node:url'
 import autoprefixer from 'autoprefixer'
-import viteImagemin from 'vite-plugin-imagemin'
+// import viteImagemin from 'vite-plugin-imagemin'
 
 export default defineConfig({
-  build: {
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true
-      },
-      sourceMap: true
-    }
-  },
+  // build: {
+  //   minify: 'terser',
+  //   terserOptions: {
+  //     compress: {
+  //       drop_console: true
+  //     },
+  //     sourceMap: true
+  //   }
+  // },
   plugins: [
-    vue(),
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false
-      },
-      optipng: {
-        optimizationLevel: 7
-      },
-      mozjpeg: {
-        quality: 20
-      },
-      pngquant: {
-        quality: [0.8, 0.9],
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox'
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false
-          }
-        ]
-      }
-    })
+    vue()
+    // viteImagemin({
+    //   gifsicle: {
+    //     optimizationLevel: 7,
+    //     interlaced: false
+    //   },
+    //   optipng: {
+    //     optimizationLevel: 7
+    //   },
+    //   mozjpeg: {
+    //     quality: 20
+    //   },
+    //   pngquant: {
+    //     quality: [0.8, 0.9],
+    //     speed: 4
+    //   },
+    //   svgo: {
+    //     plugins: [
+    //       {
+    //         name: 'removeViewBox'
+    //       },
+    //       {
+    //         name: 'removeEmptyAttrs',
+    //         active: false
+    //       }
+    //     ]
+    //   }
+    // })
   ],
   resolve: {
     alias: {

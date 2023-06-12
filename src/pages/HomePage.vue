@@ -24,7 +24,6 @@
     </div>
   </section>
   <section class="section">
-    {{contents}}
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
@@ -33,10 +32,6 @@
             <div class="heading-section_description-content">
               <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you
                 covered.</p>
-            </div>
-            <div class="error"
-            >
-
             </div>
             <div class="cards-w">
               <article v-for="feature in whatWeDos"
@@ -68,7 +63,7 @@
                              :heading="dd.heading"
                              :description="dd.description"
                              :index="index"
-                             :initialOpenIndex="0"/>
+                             :initialOpenIndex="2"/>
             </div>
           </div>
         </div>
@@ -84,7 +79,16 @@
             <div class="heading-section_description-content">
               <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
             </div>
-
+            <div class="accomplished-w"
+                 v-for="projects in accomplishedProjects"
+                 :key="projects.id">
+              <div class="accomplished-img-w">
+                <img :src=projects.imgUrl
+                     :alt="projects.imgAlt">
+                <h3 class="accomplished_name">{{ projects.heading }}</h3>
+                <p class="accomplished_description">{{ projects.description }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -97,6 +101,8 @@ import {computed, inject} from 'vue'
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
 
 const stores = inject('$stores')
+await stores.content.load('homePage');
+
 const whatWeDos = computed(() => stores.content.item('what-we-dos'));
 const techStacks = computed(() => stores.content.item('tech-stacks'));
 const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
@@ -210,5 +216,6 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 }
 
 @include mobile {
+
 }
 </style>

@@ -5,5 +5,5 @@ const defaultKyOptions = {
 	timeout: 10000
 }
 
-export default kyOptions => ky.create({...kyOptions });
+export default kyOptions => ky.create({...defaultKyOptions, ...kyOptions });
 

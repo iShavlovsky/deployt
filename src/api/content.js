@@ -1,17 +1,8 @@
-const getFieldContent =
-    '?fields[0]=heading' +
-    '&fields[1]=description'
-const getFieldImg =
-    '?populate[img][fields][0]=name' +
-    '&populate[img][fields][1]=alternativeText' +
-    '&populate[img][fields][1]=url'
-const endpoints = [
-    {key: 'what-we-dos', url: getFieldContent},
-    {key: 'tech-stacks', url: getFieldContent},
-    {key: 'accomplished-projects', url: getFieldImg}
-];
+import getURL from "@/urls/index.js";
+
 export default http => ({
-    async all() {
+    async all(name) {
+        let [endpoints] = getURL(name)
         const responseData = [];
         for (const endpoint of endpoints) {
             let response = await http

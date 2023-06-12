@@ -20,7 +20,7 @@ export default async (isSsr = false) => {
     const baseURL = 'http://localhost:1337/api/';
     const http = createHttp({ prefixUrl: baseURL });
     const apiPlugin = createApiPlugin(http);
-    const storesPlugin = createStoresPlugin(apiPlugin.api, storage);
+    const storesPlugin = createStoresPlugin(apiPlugin.api, storage, baseURL);
     const stores = storesPlugin.store;
     const router = createRouter(isSsr);
 
@@ -39,7 +39,6 @@ export default async (isSsr = false) => {
     app.use(storesPlugin);
 
     app.provide('$storage', storage);
-
 
 
     if(!isSsr){

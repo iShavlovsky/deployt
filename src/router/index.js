@@ -8,7 +8,8 @@ export default isSsr => {
     path: '/',
     name: 'home',
     props: true,
-    component: HomeView
+    component: HomeView,
+    meta: { content: 'home' }
   },
     {
       path: '/:pathMatch(.*)*',

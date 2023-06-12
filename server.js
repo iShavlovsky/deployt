@@ -3,6 +3,7 @@ import { renderToString } from 'vue/server-renderer'
 import express from 'express';
 import { readFileSync } from 'fs'
 
+
 const template = readFileSync('./dist/index.html').toString();
 const server = express();
 const port = 3000;
@@ -10,8 +11,17 @@ const port = 3000;
 server.use('/assets', express.static('./dist/assets'));
 server.use('/favicon.ico', express.static('./dist/favicon.ico'));
 server.use('/sitemap.xml', express.static( './dist/sitemap.xml'));
+
+server.use((req, res, next) => {
+	console.log('Middleware executed!');
+	next();
+});
 server.get('*', async function(req, resp){
-	resp.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';base-uri 'self';form-action 'self'");
+	resp.setHeader(
+		'Content-Security-Policy',
+		"default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';base-uri 'self';form-action 'self'"
+	);
+
 	// eslint-disable-next-line no-unused-vars
 	const { app, stores, pinia } = await createApp({ url: req.url });
 	renderToString(app).then(html => {

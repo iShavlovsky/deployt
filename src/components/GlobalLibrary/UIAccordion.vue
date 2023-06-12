@@ -62,7 +62,6 @@ export default {
         const openAccordion = () => {
 
             if (open.value.active === true) {
-
                 tl.to(el.value, {
                     duration: time,
                     backgroundColor: white,
