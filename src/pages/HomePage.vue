@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="header-animation-w">
-      <img src="../assets/img/main.webp"
+      <img src="@/assets/img/main.webp"
            alt="decorative">
     </div>
     <div class="container">
@@ -58,12 +58,12 @@
                 domain.</p>
             </div>
             <div>
-              <u-i-accordion v-for="(dd, index) in techStacks"
-                             :key="dd.id"
-                             :heading="dd.heading"
-                             :description="dd.description"
-                             :index="index"
-                             :initialOpenIndex="2"/>
+              <UIAccordion v-for="(dd, index) in techStacks"
+                           :key="dd.id"
+                           :heading="dd.heading"
+                           :description="dd.description"
+                           :index="index"
+                           :initialOpenIndex="2"/>
             </div>
           </div>
         </div>
@@ -79,16 +79,13 @@
             <div class="heading-section_description-content">
               <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
             </div>
-            <div class="accomplished-w"
-                 v-for="projects in accomplishedProjects"
-                 :key="projects.id">
-              <div class="accomplished-img-w">
-                <img :src=projects.imgUrl
-                     :alt="projects.imgAlt">
-                <h3 class="accomplished_name">{{ projects.heading }}</h3>
-                <p class="accomplished_description">{{ projects.description }}</p>
-              </div>
-            </div>
+            <UIOurWorkCard v-for="projects in accomplishedProjects"
+                           :key="projects.id"
+                           :link="projects.link"
+                           :imgUrl="projects.imgUrl"
+                           :imgAlt="projects.imgAlt"
+                           :heading="projects.heading"
+                           :description="projects.description"/>
           </div>
         </div>
       </div>
@@ -99,6 +96,7 @@
 <script setup>
 import {computed, inject} from 'vue'
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
+import UIOurWorkCard from "@/components/GlobalLibrary/UIOurWorkCard.vue";
 
 const stores = inject('$stores')
 await stores.content.load('homePage');
@@ -107,7 +105,7 @@ const whatWeDos = computed(() => stores.content.item('what-we-dos'));
 const techStacks = computed(() => stores.content.item('tech-stacks'));
 const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
 stores.seo.setPage('We are software engineers', 'We are software engineers', 200)
-
+console.log(accomplishedProjects.value)
 </script>
 
 
@@ -117,6 +115,16 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
+}
+
+.section.cta {
+  display: flex;
+  height: 100vh;
+  min-height: em(700);
+  align-items: center;
+  background-image: url("@/assets/img/cta_image.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .main-header {
@@ -168,6 +176,16 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
 .content-w {
 
+  .col-3-grid {
+    margin-top: em(32);
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-column-gap: em(89);
+    grid-row-gap: em(96);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+
   .heading-section {
     padding-top: em(200);
     display: flex;
@@ -177,12 +195,13 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
     h2 {
       @include h2();
-      white-space: nowrap;
     }
 
     .heading-section_description-content {
       max-width: em(870);
       margin-bottom: em(95);
+      grid-column-start: span 2;
+      grid-column-end: span 3;
 
       p {
         @include description-hide();
