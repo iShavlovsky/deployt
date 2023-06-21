@@ -92,6 +92,7 @@
         <div>
           
         </div>
+<<<<<<< HEAD
       </div>
     </div>
   </section>
@@ -116,6 +117,8 @@
         <div class="col-3-grid">
             <UIArticleCard/> <UIArticleCard/> <UIArticleCard/>
           </div>
+=======
+>>>>>>> 5b18eca13401246b4dc91881cf0a236f1deda0d3
       </div>
     </div>
   </section>
@@ -125,7 +128,10 @@
 import {computed, inject} from 'vue'
 import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
 import UIOurWorkCard from "@/components/GlobalLibrary/UIOurWorkCard.vue";
+<<<<<<< HEAD
 import UIArticleCard from "@/components/GlobalLibrary/UIArticleCard.vue";
+=======
+>>>>>>> 5b18eca13401246b4dc91881cf0a236f1deda0d3
 
 const stores = inject('$stores')
 const whatWeDos = computed(() => stores.content.item('what-we-dos'));
