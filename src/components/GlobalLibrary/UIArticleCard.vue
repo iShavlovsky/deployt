@@ -2,21 +2,39 @@
   <a class="small_card_lb">
     <div class="small-card-img-w">
       <img class="small-card-img"
-           src="@/assets/img/project_cover1.jpg"
-           alt="decorative">
+          :src="props.imgUrl"
+          :alt="props.imgAlt">
     </div>
     <div>
       <div></div>
       <div class="article-card-info-w">
-        <h3 class="uor-work_title">How to kick the developer in the ass to keep him happy</h3>
-        <p class="our-work_description">We are unrealistically good at what we do
-          and we are on fire with digital products. Let's develop something together! </p>
+        <h3 class="uor-work_title">{{ props.heading }}</h3>
+        <p class="our-work_description"> {{ props.descriptionon }} </p>
       </div>
     </div>
   </a>
 </template>
 
-<script>
+<script setup>
+const props = defineProps({
+  
+  imgUrl: {
+    type: String,
+    default: ''
+  },
+  imgAlt: {
+    type: String,
+    default: 'decorative'
+  },
+  heading: {
+    type: String,
+    required: true
+  },
+  descriptionon: {
+    type: String,
+    required: true
+  }
+})
 
 </script>
 

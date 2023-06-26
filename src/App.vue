@@ -14,10 +14,12 @@
       </template>
     </Suspense>
   </main>
+  <main-footer/>
 </template>
 
 <script setup>
 import MainNavBar from "@/components/MainNavBar.vue";
+import MainFooter from "@/components/MainFooter.vue";
 import UISpinner from "@/components/GlobalLibrary/UISpinner.vue";
 </script>
 
