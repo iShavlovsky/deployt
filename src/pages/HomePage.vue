@@ -63,7 +63,7 @@
                            :heading="dd.heading"
                            :description="dd.description"
                            :index="index"
-                           :initialOpenIndex="2"/>
+                           :initialOpenIndex="0"/>
             </div>
           </div>
         </div>
@@ -105,7 +105,6 @@ const whatWeDos = computed(() => stores.content.item('what-we-dos'));
 const techStacks = computed(() => stores.content.item('tech-stacks'));
 const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
 stores.seo.setPage('We are software engineers', 'We are software engineers', 200)
-console.log(accomplishedProjects.value)
 </script>
 
 
@@ -231,6 +230,9 @@ console.log(accomplishedProjects.value)
         }
       }
     }
+  }
+  .card-w{
+    margin-bottom: em(96);
   }
 }
 

@@ -9,7 +9,7 @@
     <div class="grid-main">
       <div></div>
       <div class="our-work-card-info-w">
-        <h3 class="uor-work_title">{{ props.heading }}</h3>
+        <h3 class="our-work_title">{{ props.heading }}</h3>
         <p class="our-work_description">{{ props.description }}</p>
       </div>
     </div>
@@ -43,36 +43,39 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-.big_card_lb{
-    color: $primary-white;
-}
-.our-work-image-w {
-    width: 100%;
-    height: em(410);
-    overflow: hidden;
+.big_card_lb {
+  color: $primary-white;
 }
 
-.uor-work_title {
+.our-work-image-w {
+  width: 100%;
+  height: em(410);
+  overflow: hidden;
+}
+
+.our-work_title {
   @include h3-small();
 }
 
 .grid-main {
-  @include col-3-grid(em(32))
+  @include col-3-grid(em(32));
+  margin-bottom: em(96);
 }
 
 .our-work-card-info-w {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: em(16);
-    grid-column-start: span 2;
-    grid-column-end: span 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: em(16);
+  grid-column-start: span 2;
+  grid-column-end: span 3;
 }
 
 .our-work_description {
-        @include txt-body();
+  @include txt-body();
 }
+
 .our-work-image {
-    object-fit: cover;
-    height: 140%;
+  object-fit: cover;
+  height: 140%;
 }
 </style>

@@ -9,16 +9,16 @@
       <div class="spinner-line"
            :style="lineStyle"></div>
       <div class="spinner-circle"
-           :style="circleStyle">&#9679;</div>
+           :style="circleStyle">&#9679;
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'UISpinner',
+<script setup>
+import {computed} from "vue";
 
-  props: {
+  const props = defineProps({
     animationDuration: {
       type: Number,
       default: 1000
@@ -31,33 +31,24 @@ export default {
       type: String,
       default: '#fff'
     }
-  },
+  });
 
-  computed: {
-    spinnerStyle() {
-      return {
-        height: `${this.size}px`,
-        width: `${this.size}px`
-      }
-    },
+  const spinnerStyle = computed(() => ({
+    height: `${props.size}px`,
+    width: `${props.size}px`
+  }));
 
-    circleStyle() {
-      return {
-        color: this.color,
-        fontSize: `${this.size * 0.24}px`
-      }
-    },
+  const circleStyle = computed(() => ({
+    color: props.color,
+    fontSize: `${props.size * 0.24}px`
+  }));
 
-    lineStyle() {
-      return {
-        animationDuration: `${this.animationDuration}ms`,
-        borderLeftWidth: `${this.size / 25}px`,
-        borderTopWidth: `${this.size / 25}px`,
-        borderLeftColor: this.color
-      }
-    }
-  }
-}
+  const lineStyle = computed(() => ({
+    animationDuration: `${props.animationDuration}ms`,
+    borderLeftWidth: `${props.size / 25}px`,
+    borderTopWidth: `${props.size / 25}px`,
+    borderLeftColor: props.color
+  }));
 </script>
 
 <style lang="css">

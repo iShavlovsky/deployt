@@ -3,7 +3,7 @@
     <article class="dd"
              ref="el"
              :class="{ 'active': open.active }">
-      <div @click="open.active = !open.active"
+      <div @click="toggleAccordion"
            class="dd_head"
            ref="dd_head">
         <h3 class="dd_name">{{ heading }}</h3>
@@ -22,151 +22,142 @@
   </div>
 </template>
 
-<script>
-import {ref, onMounted, watch} from "vue";
-import {gsap, Power0} from 'gsap'
+<script setup>
+import { ref, onMounted, watch } from "vue";
+import { gsap, Power0 } from 'gsap'
+const props = defineProps({
+  heading: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  index: {
+    type: Number,
+    required: true
+  },
+  initialOpenIndex: {
+    type: Number,
+    default: -1
+  }
+})
 
-export default {
-    name: 'UIAccordion',
-    props: {
-        heading: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            required: true
-        },
-        index: {
-            type: Number,
-            required: true
-        },
-        initialOpenIndex: {
-            type: Number,
-            default: -1
-        }
-    },
-    setup(props) {
-        const open = ref({active: false})
+const open = ref({ active: false })
+const el = ref(null);
+const elBody = ref(null);
+const line1 = ref(null);
+const line2 = ref(null);
 
-        const el = ref(null);
-        const elBody = ref(null);
-        const line1 = ref(null);
-        const line2 = ref(null);
+let tl = gsap.timeline()
+const time = 0.15;
+const white = '#F9FEFF'
+const black = '#131313'
 
-        let tl = gsap.timeline()
-        const time = 0.15;
-        const white = '#F9FEFF'
-        const black = '#131313'
+const openAccordion = () => {
+  if (open.value.active === true) {
+    tl.to(el.value, {
+      duration: time,
+      backgroundColor: white,
+      color: black,
+      ease: Power0.easeIn
+    });
 
-        const openAccordion = () => {
+    tl.to(line1.value, {
+      duration: time,
+      backgroundColor: black,
+      rotateZ: 45,
+      ease: Power0.easeIn
+    }, '<');
 
-            if (open.value.active === true) {
-                tl.to(el.value, {
-                    duration: time,
-                    backgroundColor: white,
-                    color: black,
-                    ease: Power0.easeIn
-                });
+    tl.to(line2.value, {
+      duration: time,
+      backgroundColor: black,
+      rotateZ: -45,
+      ease: Power0.easeIn
+    }, '<');
 
-                tl.to(line1.value, {
-                    duration: time,
-                    backgroundColor: black,
-                    rotateZ: 45,
-                    ease: Power0.easeIn
-                }, '<');
+    tl.to(elBody.value, {
+      duration: time,
+      height: elBody.value.scrollHeight,
+      opacity: 1,
+      ease: Power0.easeIn
+    }, '<');
 
-                tl.to(line2.value, {
-                    duration: time,
-                    backgroundColor: black,
-                    rotateZ: -45,
-                    ease: Power0.easeIn
-                }, '<');
+    tl.to(line1.value, {
+      duration: time,
+      backgroundColor: black,
+      rotateZ: 0,
+      ease: Power0.easeIn
+    }, '+=0.1');
 
-                tl.to(elBody.value, {
-                    duration: time,
-                    height: elBody.value.scrollHeight,
-                    opacity: 1,
-                    ease: Power0.easeIn
-                }, '<');
+    tl.to(line2.value, {
+      duration: time,
+      backgroundColor: black,
+      rotateZ: 0,
+      ease: Power0.easeIn
+    }, '<');
+  } else {
+    tl.to(el.value, {
+      duration: time,
+      backgroundColor: black,
+      color: white,
+      ease: Power0.easeIn
+    });
 
-                tl.to(line1.value, {
-                    duration: time,
-                    backgroundColor: black,
-                    rotateZ: 0,
-                    ease: Power0.easeIn
-                }, '+=0.1');
+    tl.to(elBody.value, {
+      duration: time,
+      height: 0,
+      opacity: 0,
+      ease: Power0.easeIn
+    }, '<');
 
-                tl.to(line2.value, {
-                    duration: time,
-                    backgroundColor: black,
-                    rotateZ: 0,
-                    ease: Power0.easeIn
-                }, '<');
+    tl.to(line1.value, {
+      duration: time,
+      backgroundColor: white,
+      rotateZ: 45,
+      ease: Power0.easeIn
+    }, '<');
 
-            } else {
-                tl.to(el.value, {
-                    duration: time,
-                    backgroundColor: black,
-                    color: white,
-                    ease: Power0.easeIn
-                });
+    tl.to(line2.value, {
+      duration: time,
+      backgroundColor: white,
+      rotateZ: -45,
+      ease: Power0.easeIn
+    }, '<');
 
-                tl.to(elBody.value, {
-                    duration: time,
-                    height: 0,
-                    opacity: 0,
-                    ease: Power0.easeIn
-                }, '<');
+    tl.to(line1.value, {
+      duration: time,
+      backgroundColor: white,
+      rotateZ: 90,
+      ease: Power0.easeIn
+    }, '+=0.1');
 
-                tl.to(line1.value, {
-                    duration: time,
-                    backgroundColor: white,
-                    rotateZ: 45,
-                    ease: Power0.easeIn
-                }, '<');
-
-                tl.to(line2.value, {
-                    duration: time,
-                    backgroundColor: white,
-                    rotateZ: -45,
-                    ease: Power0.easeIn
-                }, '<');
-
-                tl.to(line1.value, {
-                    duration: time,
-                    backgroundColor: white,
-                    rotateZ: 90,
-                    ease: Power0.easeIn
-                }, '+=0.1');
-
-                tl.to(line2.value, {
-                    duration: time,
-                    backgroundColor: white,
-                    rotateZ: 0,
-                    ease: Power0.easeIn
-                }, '<');
-            }
-        }
-        watch(() => open.value.active, () => {
-            openAccordion();
-        })
-
-        onMounted(() => {
-            if (props.index === props.initialOpenIndex) {
-                open.value.active = true;
-                openAccordion();
-            }
-        })
-        return {
-            open,
-            el,
-            elBody,
-            line1,
-            line2
-        }
-    }
+    tl.to(line2.value, {
+      duration: time,
+      backgroundColor: white,
+      rotateZ: 0,
+      ease: Power0.easeIn
+    }, '<');
+  }
 }
+
+watch(() => open.value.active, () => {
+  openAccordion();
+})
+
+onMounted(() => {
+  if (props.index === props.initialOpenIndex) {
+    open.value.active = true;
+    openAccordion();
+  }
+})
+
+const toggleAccordion = () => {
+  open.value.active = !open.value.active;
+}
+
 </script>
 
 <style scoped lang="scss">
