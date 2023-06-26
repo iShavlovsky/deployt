@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles_to_reads",
+  "info": {
+    "singularName": "articles-to-read",
+    "pluralName": "articles-to-reads",
+    "displayName": "Articles to read",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "ArticleBody": {
+      "type": "richtext"
+    },
+    "PublicationDate": {
+      "type": "date"
+    },
+    "Thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ArticlePageCover": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

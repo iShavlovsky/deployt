@@ -2,6 +2,7 @@ const getFieldContent =
     '?fields[0]=heading' +
     '&fields[1]=description'
 
+
 const getFieldImg =
     '?populate[img][fields][0]=name' +
     '&populate[img][fields][1]=alternativeText' +
@@ -12,13 +13,12 @@ const allPageUrl = [
         'homePage': [
             {key: 'what-we-dos', url: getFieldContent},
             {key: 'tech-stacks', url: getFieldContent},
-            {key: 'accomplished-projects', url: getFieldImg}
+            {key: 'accomplished-projects', url: getFieldImg},
+            {key: 'articles-to-reads', url: ''}
         ]
     },
     {
         'blogPage': [
-            {key: 'what-we-dos', url: getFieldContent},
-            {key: 'tech-stacks', url: getFieldContent},
             {key: 'accomplished-projects', url: getFieldImg}
         ]
     }]

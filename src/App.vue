@@ -1,5 +1,5 @@
 <template>
-  <main-nav-bar/>
+  <MainNavBar/>
   <main>
     <Suspense>
       <template #default>
@@ -7,17 +7,19 @@
       </template>
       <template #fallback>
         <div class="spinner-w">
-          <u-i-spinner :animation-duration="2000"
-                       :size="200"
-                       :color="'#F9FEFF'"/>
+          <UISpinner :animation-duration="2000"
+                     :size="200"
+                     :color="'#F9FEFF'"/>
         </div>
       </template>
     </Suspense>
   </main>
+  <MainFooter/>
 </template>
 
 <script setup>
 import MainNavBar from "@/components/MainNavBar.vue";
+import MainFooter from "@/components/MainFooter.vue";
 import UISpinner from "@/components/GlobalLibrary/UISpinner.vue";
 </script>
 

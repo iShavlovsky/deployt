@@ -8,6 +8,7 @@ export default function content(rootStore, contentApi, baseURL) {
                 id: item.id,
                 heading: item.attributes.heading,
                 description: item.attributes.description,
+                artbody: item.attributes.ArticleBody ? item.attributes.ArticleBody : '',
                 imgUrl: item.attributes.img ? url+item.attributes.img.data.attributes.url : null,
                 imgAlt: item.attributes.img ? item.attributes.img.data.attributes.alternativeText : null
             }));

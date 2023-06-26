@@ -32,6 +32,8 @@ section {
 }
 
 .container {
+  padding-top: em(96);
+  padding-bottom: em(96);
   margin: 0;
   max-width: em(1440);
   padding-left: em(40);

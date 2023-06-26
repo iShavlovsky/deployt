@@ -6,35 +6,25 @@
            href="#">deploy t/</a>
       </div>
       <ul class="menu">
-        <li class="menu_item">
+        <li v-for="(link, i) in linksNavbar"
+            :key="i"
+            class="menu_item">
           <a class="menu_item-link"
-             href="#">Who we are</a>
-        </li>
-        <li class="menu_item">
-          <a class="menu_item-link"
-             href="#">Calculator</a>
-        </li>
-        <li class="menu_item">
-          <a class="menu_item-link"
-             href="#">Contact us</a>
-        </li>
-        <li class="menu_item">
-          <a class="menu_item-link"
-             href="#">Cases</a>
-        </li>
-        <li class="menu_item">
-          <a class="menu_item-link"
-             href="#">Blog</a>
+             :href="link.link">{{ link.name }}</a>
         </li>
       </ul>
     </nav>
   </header>
 </template>
 
-<script>
-export default {
-  name: 'MainNavBar'
-};
+<script setup>
+const linksNavbar = [
+  { name:'Who we are', link: "#" },
+  { name:'Calculator', link: "#" },
+  { name:'Contact us', link: "#" },
+  { name:'Cases', link: "#" },
+  { name:'Blog', link: "#" }
+]
 </script>
 
 <style lang="scss">

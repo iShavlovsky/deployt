@@ -17,7 +17,7 @@ export default async (isSsr = false) => {
     } : localStorage;
 
     const storage = createStorage(storageDriver);
-    const baseURL = 'http://45.87.153.50:1337/api/';
+    const baseURL = 'http://localhost:1337/api/';
     const http = createHttp({ prefixUrl: baseURL });
     const apiPlugin = createApiPlugin(http);
     const storesPlugin = createStoresPlugin(apiPlugin.api, storage, baseURL);
@@ -29,7 +29,7 @@ export default async (isSsr = false) => {
     const app = createAppByMode(App);
 
     components.forEach(component => {
-        app.component(component.name, component);
+        app.component(component.__name, component);
     });
 
     app.use(createPinia());
@@ -38,6 +38,7 @@ export default async (isSsr = false) => {
     app.use(apiPlugin);
     app.use(storesPlugin);
 
+    app.provide('isSsr', isSsr);
     app.provide('$storage', storage);
 
 
