@@ -2,7 +2,7 @@
   "name": "deployt-strapi",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "We are software engineers",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -10,14 +10,19 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.9.0",
-    "@strapi/plugin-users-permissions": "4.9.0",
-    "@strapi/strapi": "4.9.0",
-    "better-sqlite3": "8.4.0",
+    "@_sh/strapi-plugin-ckeditor": "^2.0.4",
+    "@ckeditor/strapi-plugin-ckeditor": "^0.0.7",
+    "@offset-dev/strapi-calendar": "^0.0.10",
+    "@strapi/plugin-color-picker": "^4.11.2",
+    "@strapi/plugin-graphql": "^4.11.2",
+    "@strapi/plugin-i18n": "4.11.2",
+    "@strapi/plugin-users-permissions": "4.11.2",
+    "@strapi/strapi": "^4.11.2",
+    "better-sqlite3": "^8.4.0",
     "mysql": "^2.18.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Deploy team"
   },
   "strapi": {
     "uuid": "10d0460a-1265-4f8f-af86-e7a1d5dbfaf2"
@@ -26,5 +31,8 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
+  }
 }

@@ -3,23 +3,42 @@ import {ref} from 'vue';
 export default function content(rootStore, contentApi, baseURL) {
     const items = ref([]);
     const url = baseURL.replace('/api/', '');
-    const item = key => items.value[key].map(item => ({
-                link: item.attributes.link ? item.attributes.link : '#',
-                id: item.id,
-                heading: item.attributes.heading,
-                description: item.attributes.description,
-                artbody: item.attributes.ArticleBody ? item.attributes.ArticleBody : '',
-                imgUrl: item.attributes.img ? url+item.attributes.img.data.attributes.url : null,
-                imgAlt: item.attributes.img ? item.attributes.img.data.attributes.alternativeText : null
-            }));
+
+    const item = key => items.value[key].map(item => {
+        const articlebody = item.attributes.articleBody || '';
+        const link = item.attributes.link || '#';
+        const imgUrl = item.attributes.img ? url + item.attributes.img.data.attributes.url :
+                                    item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.url :
+                                    null;
+
+        const imgAlt = item.attributes.img ? item.attributes.img.data.attributes.alternativeText : null;
+
+        return {
+            id: item.id,
+            heading: item.attributes.heading,
+            description: item.attributes.description,
+            ...(link && { link }),
+            ...(articlebody && { articlebody }),
+            ...(imgUrl && { imgUrl }),
+            ...(imgAlt && { imgAlt })
+        };
+    });
+
+    const itemBlogPageContent = id => items.value["articles-to-reads"]?.find(item => item.id.toString() === id);
+    const has = id => item(id) !== undefined;
+
 
     async function load(key) {
         items.value = await contentApi.all(key)
+        console.log(items.value)
     }
 
     return {
         items,
+        itemBlogPageContent,
+        has,
         item,
         load
     };
 }
+

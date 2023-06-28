@@ -24,7 +24,7 @@ const props = defineProps({
   },
   imgUrl: {
     type: String,
-    default: ''
+    default: '#'
   },
   imgAlt: {
     type: String,

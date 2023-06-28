@@ -131,12 +131,12 @@
     <div class="container">
       <div class="heading-section">
         <div class="col-3-grid">
-            <h2>Contact us</h2>
-            <div class="heading-section_description-content">
-              <p>You got a design drawn and you're still looking for developers? Or you don't know where to start? Stop fucking the ox! Let's go do great things 
-                for the good of mankind and in the name of Allah</p>
-            </div>
+          <h2>Contact us</h2>
+          <div class="heading-section_description-content">
+            <p>You got a design drawn and you're still looking for developers? Or you don't know where to start? Stop fucking the ox! Let's go do great things
+              for the good of mankind and in the name of Allah</p>
           </div>
+        </div>
       </div>
     </div>
   </section>
