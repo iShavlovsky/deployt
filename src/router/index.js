@@ -36,6 +36,9 @@ export default isSsr => {
 
   return createRouter({
     routes,
-    history: createHistory(import.meta.env.BASE_URL)
+    history: createHistory(import.meta.env.BASE_URL),
+    scrollBehavior() {
+      return { top: 0 }; // прокрутка страницы в начало
+    }
   });
 }

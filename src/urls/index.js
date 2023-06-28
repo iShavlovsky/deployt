@@ -1,32 +1,24 @@
-const fieldContent =
-    'fields[0]=heading' +
-    '&fields[1]=description'
+const fieldContent = {
+    'fields[0]': 'heading',
+    'fields[1]': 'description'
+}
 
-const fieldImg =
-    'populate[img][fields][0]=name' +
-    '&populate[img][fields][1]=alternativeText' +
-    '&populate[img][fields][1]=url'
 
-// const fieldImgBlogThumbnail  =
-//     'populate[thumbnail][fields][0]=name' +
-//     '&populate[thumbnail][fields][1]=alternativeText' +
-//     '&populate[thumbnail][fields][1]=url';
-//
-// const queryParameters =
-//     'fields[0]=heading' +
-//     '&fields[1]=description' +
-//     '&populate[thumbnail][fields][0]=name' +
-//     '&populate[thumbnail][fields][1]=alternativeText' +
-//     '&populate[thumbnail][fields][1]=url';
 
-const fieldImgBlogPage  =
-    'populate[thumbnail][fields][0]=name' +
-    '&populate[thumbnail][fields][1]=alternativeText' +
-    '&populate[thumbnail][fields][1]=url' +
-    '&populate[articlePageCover][fields][0]=name' +
-    '&populate[articlePageCover][fields][1]=alternativeText' +
-    '&populate[articlePageCover][fields][1]=url';
+const img = [
+    'name',
+    'alternativeText',
+    'url'
+];
 
+
+const fieldImg = {
+    'populate[img][fields]': img.join(',')
+}
+const fieldImgBlogPage  = {
+    'populate[thumbnail][fields]': img.join(','),
+    'populate[articlePageCover][fields]': img.join(',')
+}
 
 const allPageUrl = [
     {

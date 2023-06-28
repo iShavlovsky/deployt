@@ -4,8 +4,7 @@
       <div class="content-w">
         <div class="heading-section">
           <div v-if="hasContent">
-            <h1>Blog Page</h1>
-            <div>{{ articlesToRead }}</div>
+            <div v-html="bodyPage"></div>-->
           </div>
           <div v-else>Product not found</div>
         </div>
@@ -33,8 +32,9 @@ if(!hasContent.value){
   await stores.content.load('blogPage');
 }
 
-console.log(hasContent.value)
-console.log(articlesToRead.value)
+const bodyPage = articlesToRead.value.attributes.articleBody
+
+
 </script>
 
 <style scoped lang="scss">
