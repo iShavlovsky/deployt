@@ -17,7 +17,7 @@ export default async (isSsr = false) => {
     } : localStorage;
 
     const storage = createStorage(storageDriver);
-    const baseURL = 'http://localhost:1337/api/';
+    const baseURL = ' https://api.deployteam.ru/api/';
     const http = createHttp({ prefixUrl: baseURL });
     const apiPlugin = createApiPlugin(http);
     const storesPlugin = createStoresPlugin(apiPlugin.api, storage, baseURL);
