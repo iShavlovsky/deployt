@@ -27,7 +27,7 @@ import UISpinner from "@/components/GlobalLibrary/UISpinner.vue";
 
 <style lang="scss">
 .spinner-w {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
