@@ -27,19 +27,21 @@ const fieldImgBlogPage  =
     '&populate[articlePageCover][fields][1]=alternativeText' +
     '&populate[articlePageCover][fields][1]=url';
 
+const get = '?'
+// const end ='&'
 
 const allPageUrl = [
     {
         'homePage': [
-            {key: 'what-we-dos', url: fieldContent},
-            {key: 'tech-stacks', url: fieldContent},
-            {key: 'accomplished-projects', url: fieldImg},
-            {key: 'articles-to-reads', url: fieldImgBlogPage}
+            {key: 'what-we-dos', url: get + fieldContent},
+            {key: 'tech-stacks', url: get + fieldContent},
+            {key: 'accomplished-projects', url: get+ fieldImg},
+            {key: 'articles-to-reads', url: get + fieldImgBlogPage}
         ]
     },
     {
         'blogPage': [
-            {key: 'articles-to-reads', url: fieldImgBlogPage}
+            {key: 'articles-to-reads', url: get + fieldImgBlogPage}
         ]
     }]
 export default function getURL(pageKey) {

@@ -23,6 +23,8 @@ import {useRoute} from 'vue-router'
 const route = useRoute()
 const stores = inject('$stores')
 
+//
+
 const contentStore = computed(() => stores.content)
 const id = computed(() => route.params.id)
 const validId = computed(() => /^[1-9]+\d*$/.test(id.value))

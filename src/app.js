@@ -5,7 +5,6 @@ import createStoresPlugin from '@/store/index.js';
 import createRouter from '@/router/index.js';
 import seoTagsConnector from '@/connectors/seo-tags.js'
 
-
 import {createApp, createSSRApp} from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
@@ -17,10 +16,9 @@ export default async (isSsr = false) => {
         removeItem: () => null
     } : localStorage;
 
-
     const storage = createStorage(storageDriver);
-    const baseURL = ' https://api.deployteam.ru/api/';
-    // const baseURL = ' http://localhost:1337/api/';
+    // const baseURL = ' https://api.deployteam.ru/api/';
+    const baseURL = ' http://localhost:1337/api/';
     const http = createHttp({ prefixUrl: baseURL });
     const apiPlugin = createApiPlugin(http);
     const storesPlugin = createStoresPlugin(apiPlugin.api, storage, baseURL);

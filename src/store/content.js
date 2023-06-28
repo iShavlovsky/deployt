@@ -8,10 +8,10 @@ export default function content(rootStore, contentApi, baseURL) {
         const articlebody = item.attributes.articleBody || '';
         const link = item.attributes.link || '#';
         const imgUrl = item.attributes.img ? url + item.attributes.img.data.attributes.url :
-                                       item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.url : '#';
+                                    item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.url :
+                                    null;
 
-        const imgAlt = item.attributes.img ? item.attributes.img.data.attributes.alternativeText  :
-                              item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.alternativeText : '#';
+        const imgAlt = item.attributes.img ? item.attributes.img.data.attributes.alternativeText : null;
 
         return {
             id: item.id,

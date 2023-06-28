@@ -71,7 +71,7 @@
                            :heading="dd.heading"
                            :description="dd.description"
                            :index="index"
-                           :initialOpenIndex="0"/>
+                           :initialOpenIndex="2"/>
             </div>
           </div>
         </div>
