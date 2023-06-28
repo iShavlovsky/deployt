@@ -16,7 +16,7 @@ export default isSsr => {
     },
     {
       path: '/articles',
-      name: 'blog.item',
+      name: 'articles',
       component: Articles,
       meta: { content: 'articles' }
 
@@ -26,7 +26,7 @@ export default isSsr => {
       name: 'articles.item',
       props: true,
       component: BlogPage,
-      meta: { content: 'blog' }
+      meta: { content: 'article' }
     },
     {
       path: '/:pathMatch(.*)*',

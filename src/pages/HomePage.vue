@@ -117,6 +117,7 @@
         <div>
           <UIArticleCard v-for="articles in articlesToRead"
                          :key="articles.id"
+                         :idPost="articles.id"
                          :imgUrl="articles.imgUrl"
                          :imgAlt="articles.imgAlt"
                          :heading="articles.heading"

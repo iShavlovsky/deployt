@@ -115,35 +115,31 @@
 
   .p12px {
     @include txt-button();
-    margin-left: (em(16))
+    margin-left: em(16);
   }
 
   .form-label {
-    @include h3-small((em(16)));
+    @include h3-small(em(16));
     line-height: 160%;
   }
 
-<<<<<<< HEAD
-  .checkbox-input{
-=======
   .checkbox-input {
->>>>>>> 44fa8d37 (update project 5)
-    margin-left: (em(-2));
-    width: (em(16));
-    height: (em(16));
+    margin-left: em(-2);
+    width: em(16);
+    height: em(16);
   }
 
   .input-field {
-    min-height: (em(32));
+    min-height: em(32);
     margin-bottom: 0;
     padding-top: 1.375em;
     padding-bottom: 1.375em;
-    padding-left: (em(32));
-    border: (em(1)) solid $primary-white;
+    padding-left: em(32);
+    border: em(1) solid $primary-white;
     background-color: $primary-black;
     transition: all 200ms cubic-bezier(.39, .575, .565, 1);
     color: #f9feff;
-    font-size: (em(16));
+    font-size: em(16);
   }
 
   .form-content {
@@ -153,7 +149,7 @@
   .form-field {
     display: grid;
     grid-auto-columns: 1fr;
-    grid-row-gap: (em(8));
+    grid-row-gap: em(8);
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }
@@ -161,7 +157,7 @@
   .note-form-field {
     display: grid;
     grid-auto-columns: 1fr;
-    grid-row-gap: (em(8));
+    grid-row-gap: em(8);
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
     grid-row-start: span 1;
@@ -173,8 +169,8 @@
   .form-container {
     display: grid;
     grid-auto-columns: 1fr;
-    grid-column-gap: (em(89));
-    grid-row-gap: (em(32));
+    grid-column-gap: em(89);
+    grid-row-gap: em(32);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-column-start: span 2;

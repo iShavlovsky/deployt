@@ -2,15 +2,18 @@
   <header class="nav-bar">
     <nav class='nav'>
       <div class="nav_logo-w">
-        <a class="logo"
-           href="#">deploy t/</a>
+        <RouterLink class="logo"
+                    :to="{name: 'home'}">deploy t/
+        </RouterLink>
       </div>
       <ul class="menu">
         <li v-for="(link, i) in linksNavbar"
             :key="i"
             class="menu_item">
-          <a class="menu_item-link"
-             :href="link.link">{{ link.name }}</a>
+          <RouterLink class="menu_item-link"
+                      :to="link.link">
+            {{ link.name }}
+          </RouterLink>
         </li>
       </ul>
     </nav>
@@ -23,13 +26,13 @@ const linksNavbar = [
   { name:'Calculator', link: "#" },
   { name:'Contact us', link: "#" },
   { name:'Cases', link: "#" },
-  { name:'Blog', link: "#" }
+  { name:'Blog', link: {name: 'articles'}}
 ]
 </script>
 
 <style lang="scss">
 .nav-bar{
-  position: absolute;
+  position: relative;
   bottom: auto;
   width: 100%;
   padding:em(16) em(40) em(16) em(40);
