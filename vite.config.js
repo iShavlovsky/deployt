@@ -2,9 +2,11 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {fileURLToPath, URL} from 'node:url'
 import autoprefixer from 'autoprefixer'
+
 // import viteImagemin from 'vite-plugin-imagemin'
 
 export default defineConfig({
+
   // build: {
   //   minify: 'terser',
   //   terserOptions: {
