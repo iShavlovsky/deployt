@@ -106,11 +106,8 @@ const socialLinks = [
 
 <style scoped lang="scss">
 .footer {
-  position: absolute;
-  bottom: auto;
   width: 100%;
   padding: em(100) em(40) em(16) em(40);
-  backdrop-filter: blur(5px);
   background-color: $primary-black;
   border-top: em(1) solid $primary-white;
 
