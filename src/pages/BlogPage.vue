@@ -4,7 +4,7 @@
       <div class="content-w">
         <div class="heading-section">
           <div v-if="hasContent">
-            <div v-html="bodyPage"></div>-->
+            <div v-html="bodyPage"></div>
           </div>
           <div v-else>Product not found</div>
         </div>
@@ -32,8 +32,12 @@ if(!hasContent.value){
   await stores.content.load('blogPage');
 }
 
-const bodyPage = articlesToRead.value.attributes.articleBody
+function addImagePrefix(html) {
+  const regex = /<img\s+src="([^"]+)"/g;
+  return html.replace(regex, `<img src="${contentStore.value.url}$1"`);
+}
 
+const bodyPage = addImagePrefix(articlesToRead.value.attributes.articleBody)
 
 </script>
 

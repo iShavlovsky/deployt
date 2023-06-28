@@ -38,7 +38,8 @@ export default function content(rootStore, contentApi, baseURL) {
         itemBlogPageContent,
         has,
         item,
-        load
+        load,
+        url
     };
 }
 
