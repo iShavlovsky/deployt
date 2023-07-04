@@ -59,6 +59,13 @@
       "type": "uid",
       "targetField": "heading",
       "required": true
+    },
+    "body2": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
     }
   }
 }

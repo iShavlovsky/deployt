@@ -5,7 +5,7 @@
               class="small_card_lb">
     <div class="small-card-img-w">
       <img class="small-card-img"
-           :src="props.imgUrl"
+           v-lazy="props.imgUrl"
            :alt="props.imgAlt">
     </div>
     <div>

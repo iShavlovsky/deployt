@@ -100,7 +100,6 @@
         </div>
       </div>
     </div>
-
   </section>
   <section class="section">
     <div class="container">
@@ -206,7 +205,6 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
     grid-column-end: span 3;
 
     .main-header_description-text {
-
       p {
         @include description-low()
       }

@@ -27,7 +27,6 @@
   font-weight: 700;
   line-height: $height;
   text-transform: uppercase;
-
 }
 
 @mixin description-hide ($size: em(42), $height: 120%) {
@@ -77,4 +76,20 @@
   grid-row-gap: em(96);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
+}
+
+
+@mixin universal-text (
+  $size: em(26),
+  $height: 120%,
+  $font: "Poppins-Light",
+  $fontstyle: normal,
+  $fontweight: 700
+) {
+  font-family: $font;
+  font-style: $fontstyle;
+  font-size: $size;
+  font-weight: $fontweight;
+  line-height: $height;
+  text-transform: uppercase;
 }

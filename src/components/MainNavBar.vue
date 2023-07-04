@@ -43,6 +43,7 @@ const linksNavbar = [
     width: 100%;
     display: flex;
     justify-content: space-between;
+
     .menu{
       width: auto;
       display: flex;
@@ -52,7 +53,7 @@ const linksNavbar = [
       .menu_item{
         margin-right: em(32);
 
-        a{
+        a {
           @include txt-button();
           color: $primary-white;
         }

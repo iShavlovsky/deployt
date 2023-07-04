@@ -15,7 +15,7 @@ export default function content(rootStore, contentApi, baseURL) {
           item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.url : '#';
 
         const imgAlt = item.attributes.img ? item.attributes.img.data.attributes.alternativeText :
-          item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.alternativeText : '#';
+          item.attributes.thumbnail ? item.attributes.thumbnail.data.attributes.alternativeText : 'decorative';
 
         return {
             id: item.id,
