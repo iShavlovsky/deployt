@@ -20,8 +20,9 @@ html ::-webkit-scrollbar-thumb{
 
 /* general */
 body {
-  font-size: $v-body-main-size-font;
+  font-size: 1.1111111111111112vw;
   background-color: $primary-black;
+  color: $primary-black;
 }
 
 section {
@@ -47,17 +48,6 @@ img {
   object-fit: contain;
 }
 
-img[lazy=loading] {
-  /*your style here*/
-  object-fit: contain;
-}
-img[lazy=error] {
-  /*your style here*/
-}
-img[lazy=loaded] {
-  /*your style here*/
-}
-
 .logo{
   font-family: "Montserrat-Bold", serif;
   font-style: normal;
@@ -72,7 +62,7 @@ img[lazy=loaded] {
 .error{
   padding: em(32);
   p{
-    @include m();
+    @include h3-small();
     color: $error-red;
   }
 }

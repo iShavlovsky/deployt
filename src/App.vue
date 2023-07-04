@@ -23,10 +23,6 @@ import MainNavBar from "@/components/MainNavBar.vue";
 import MainFooter from "@/components/MainFooter.vue";
 import MainForm from "@/components/MainForm.vue";
 import UISpinner from "@/components/GlobalLibrary/UISpinner.vue";
-import {ref} from 'vue';
-
-
-const themSwith = ref({ active: true })
 
 
 </script>
