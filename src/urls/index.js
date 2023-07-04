@@ -1,9 +1,7 @@
-const fieldContent = {
-    'fields[0]': 'heading',
-    'fields[1]': 'description'
-}
-
-
+const content = [
+    'heading',
+    'description'
+];
 
 const img = [
     'name',
@@ -11,6 +9,9 @@ const img = [
     'url'
 ];
 
+const fieldContent = {
+    'fields': content.join(',')
+}
 
 const fieldImg = {
     'populate[img][fields]': img.join(',')

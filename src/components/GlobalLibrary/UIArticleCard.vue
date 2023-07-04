@@ -1,7 +1,7 @@
 <template>
   <RouterLink :to="{
                 name: 'articles.item',
-                params: { id: props.idPost } }"
+                params: { id: props.slug } }"
               class="small_card_lb">
     <div class="small-card-img-w">
       <img class="small-card-img"
@@ -21,8 +21,8 @@
 <script setup>
 
 const props = defineProps({
-  idPost: {
-    type: [String, Number],
+  slug: {
+    type: String,
     required: true
   },
   imgUrl: {
