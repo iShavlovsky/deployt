@@ -20,11 +20,11 @@
   text-transform: uppercase;
 }
 
-@mixin h3-small ($size: em(26), $height: 120%,) {
-  font-family: "Poppins-Light", serif;
+@mixin custom-heading ($size: em(26), $height: 120%,) {
+  font-family: "Montserrat-SemiBold", serif;
   font-style: normal;
   font-size: $size;
-  font-weight: 700;
+  font-weight: 600;
   line-height: $height;
   text-transform: uppercase;
 }

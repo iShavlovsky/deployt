@@ -9,7 +9,7 @@
     <div class="grid-main">
       <div></div>
       <div class="our-work-card-info-w">
-        <h3 class="our-work_title">{{ props.heading }}</h3>
+        <h3 class="text-up1">{{ props.heading }}</h3>
         <p class="text-base">{{ props.description }}</p>
       </div>
     </div>
@@ -51,10 +51,6 @@ const props = defineProps({
   width: 100%;
   height: em(410);
   overflow: hidden;
-}
-
-.our-work_title {
-  @include h3-small();
 }
 
 .grid-main {

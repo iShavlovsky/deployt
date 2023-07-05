@@ -281,15 +281,6 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
         align-items: flex-start;
         justify-content: flex-start;
         color: $primary-white;
-
-        .card_name {
-          @include h3-small();
-        }
-
-        .card_description {
-          margin-top: em(16);
-          @include txt-body()
-        }
       }
     }
   }

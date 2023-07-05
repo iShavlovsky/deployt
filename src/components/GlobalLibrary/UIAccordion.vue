@@ -6,7 +6,7 @@
       <div @click="toggleAccordion"
            class="dd_head"
            ref="dd_head">
-        <h3 class="dd_name">{{ heading }}</h3>
+        <h3 class="text-up1">{{ heading }}</h3>
         <div class="dd_btn">
           <div class="dd_btn-line"
                ref="line1"></div>
@@ -193,10 +193,6 @@ const toggleAccordion = () => {
       display: flex;
       justify-content: space-between;
 
-
-      .dd_name {
-        @include h3-small();
-      }
 
       .dd_btn {
         width: em(30);

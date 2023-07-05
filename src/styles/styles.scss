@@ -9,6 +9,16 @@
   line-height: 160%;
 }
 
+.text-up1 {
+  font-family: "Montserrat-SemiBold", serif;
+  font-style: normal;
+  font-size: em(26);
+  font-weight: 600;
+  line-height: auto;
+  text-transform: uppercase;
+}
+
+
 /* scrollBar */
 ::-webkit-scrollbar,
 html ::-webkit-scrollbar {
@@ -70,7 +80,7 @@ img {
 .error{
   padding: em(32);
   p{
-    @include h3-small();
+    @include custom-heading();
     color: $error-red;
   }
 }

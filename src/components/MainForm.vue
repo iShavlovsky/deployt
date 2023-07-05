@@ -115,7 +115,7 @@
   }
 
   .form-label {
-    @include h3-small(em(16));
+    @include custom-heading(em(16));
     line-height: 160%;
   }
 

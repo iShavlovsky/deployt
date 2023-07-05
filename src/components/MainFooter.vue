@@ -7,7 +7,7 @@
       </div>
       <div class="footer-2-col-content-w">
         <div>
-          <p class="footer-title">Company</p>
+          <h3 class="footer-title">Company</h3>
           <ul class="menu">
             <li v-for="(link, i) in linksCompany"
                 :key="i"
@@ -19,7 +19,7 @@
         </div>
 
         <div>
-          <p class="footer-title">Resources</p>
+          <h3 class="footer-title">Resources</h3>
           <ul class="menu">
             <li v-for="(link, i) in linksResources"
                 :key="i"
@@ -32,7 +32,7 @@
       </div>
 
       <div>
-        <p class="footer-title">About</p>
+        <h3 class="footer-title">About</h3>
         <ul class="menu">
           <li v-for="(link, i) in linksAbout"
               :key="i"
@@ -118,7 +118,7 @@ const socialLinks = [
 
   .footer-nav_logo-w {
     a {
-      @include h3-small();
+      @include custom-heading();
     }
   }
 
@@ -143,7 +143,7 @@ const socialLinks = [
   }
 
   .footer-title {
-    @include h3-small();
+    @include custom-heading();
     font-size: em(16);
   }
 

@@ -11,7 +11,7 @@
     <div>
       <div></div>
       <div class="article-card-info-w">
-        <h3 class="uor-work_title">{{ props.heading }}</h3>
+        <h3 class="text-up1">{{ props.heading }}</h3>
         <p class="text-base"> {{ props.description }} </p>
       </div>
     </div>
@@ -59,9 +59,6 @@ const props = defineProps({
     overflow: hidden;
 }
 
-.uor-work_title {
-        @include h3-small();
-}
 .article-card-info-w {
     display: grid;
     grid-template-columns: 1fr;
@@ -73,9 +70,6 @@ const props = defineProps({
     object-fit: cover;
     height: 100%;
     width: 100%;
-}
-.my-paragraph {
-  /* Ваши стили для параграфов */
 }
 
 </style>
