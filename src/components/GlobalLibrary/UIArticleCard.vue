@@ -12,7 +12,7 @@
       <div></div>
       <div class="article-card-info-w">
         <h3 class="uor-work_title">{{ props.heading }}</h3>
-        <p class="our-work_description"> {{ props.description }} </p>
+        <p class="p-body"> {{ props.description }} </p>
       </div>
     </div>
   </RouterLink>
@@ -69,9 +69,6 @@ const props = defineProps({
     margin-top: em(16);
 }
 
-.our-work_description {
-        @include txt-body();
-}
 .small-card-img {
     object-fit: cover;
     height: 100%;

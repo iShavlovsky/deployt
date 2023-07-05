@@ -1,5 +1,5 @@
 <template>
-  <header class="footer">
+  <footer class="footer">
     <nav class='nav-footer'>
       <div class="footer-nav_logo-w">
         <a class="logo"
@@ -59,10 +59,10 @@
       </div>
     </nav>
     <div class="footer-bot-info-w">
-      <p class="copy">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
-      <p class="copy">Design by <span class="brand-span">deploy t/</span></p>
+      <p class="p-body">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
+      <p class="p-body">Design by <span class="brand-span">deploy t/</span></p>
     </div>
-  </header>
+  </footer>
 </template>
 
 <script setup>
@@ -110,6 +110,7 @@ const socialLinks = [
   padding: em(100) em(40) em(16) em(40);
   background-color: $primary-black;
   border-top: em(1) solid $primary-white;
+  color: $primary-white;
 
   .nav-footer {
     @include col-3-grid(em(0))
@@ -118,14 +119,13 @@ const socialLinks = [
   .footer-nav_logo-w {
     a {
       @include h3-small();
-      color: $primary-white;
     }
   }
 
   a {
     @include txt-button();
-    color: $primary-white;
     font-size: em(16);
+    color: $primary-white;
   }
 
   .menu {
@@ -144,7 +144,6 @@ const socialLinks = [
 
   .footer-title {
     @include h3-small();
-    color: $primary-white;
     font-size: em(16);
   }
 
@@ -169,10 +168,6 @@ const socialLinks = [
     opacity: 0.5;
   }
 
-  .copy {
-    @include txt-body;
-    color: $primary-white;
-  }
 
   .brand-span {
     text-transform: uppercase;

@@ -163,10 +163,16 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 <style lang="scss">
 
 .header-animation-w {
-  position: absolute;
+  width: 100vw;
+  height: 100%;
+  margin-left: em(-40);
+  margin-top: em(-96);
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
+  background-image: url('@/assets/img/main.webp');
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .section.cta {
@@ -181,7 +187,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
 .main-header {
   position: relative;
-  padding-top: em(271);
+  margin-top: em(-94);
   color: $primary-white;
 
   .head-subtitle-and-btn-w {

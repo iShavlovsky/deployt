@@ -10,7 +10,7 @@
       <div></div>
       <div class="our-work-card-info-w">
         <h3 class="our-work_title">{{ props.heading }}</h3>
-        <p class="our-work_description">{{ props.description }}</p>
+        <p class="p-body">{{ props.description }}</p>
       </div>
     </div>
   </a>
@@ -68,10 +68,6 @@ const props = defineProps({
   grid-row-gap: em(16);
   grid-column-start: span 2;
   grid-column-end: span 3;
-}
-
-.our-work_description {
-  @include txt-body();
 }
 
 .our-work-image {

@@ -16,7 +16,9 @@
       </div>
       <div class="dd_body"
            ref="elBody">
-        <p class="dd_description">{{ description }}</p>
+        <div class="dd_description">
+          <p class="p-body">{{ description }}</p>
+        </div>
       </div>
     </article>
   </div>
@@ -227,7 +229,6 @@ const toggleAccordion = () => {
         padding: em(24) em(0) em(56) em(0);
         white-space: break-spaces;
         overflow-wrap: break-word;
-        @include txt-body()
       }
     }
   }

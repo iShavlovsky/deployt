@@ -1,5 +1,5 @@
 <template>
-  <section class="contact-form">
+  <section class="section">
     <div class="container">
       <div class='form-content'>
         <h2>Contact us</h2>
@@ -96,10 +96,6 @@
 </script>
 
 <style scoped lang="scss">
-.contact-form {
-  width: 100%;
-  background-color: $primary-black;
-  color: $primary-white;
 
   .form-btn {
     display: flex;
@@ -199,5 +195,4 @@
       @include description-hide();
     }
   }
-}
 </style>
