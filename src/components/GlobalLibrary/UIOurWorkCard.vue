@@ -9,7 +9,7 @@
     <div class="grid-main">
       <div></div>
       <div class="our-work-card-info-w">
-        <h3 class="text-up1">{{ props.heading }}</h3>
+        <h3 class="text-base-up1">{{ props.heading }}</h3>
         <p class="text-base">{{ props.description }}</p>
       </div>
     </div>

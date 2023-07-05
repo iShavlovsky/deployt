@@ -6,7 +6,7 @@
       <div @click="toggleAccordion"
            class="dd_head"
            ref="dd_head">
-        <h3 class="text-up1">{{ heading }}</h3>
+        <h3 class="text-base-up1">{{ heading }}</h3>
         <div class="dd_btn">
           <div class="dd_btn-line"
                ref="line1"></div>
