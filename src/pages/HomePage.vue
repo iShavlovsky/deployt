@@ -221,7 +221,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      padding: em(16) em(110) em(16) em(110);
+      padding: em(16) em(32) em(16) em(32);
       @include border-white();
       color: $primary-white;
 

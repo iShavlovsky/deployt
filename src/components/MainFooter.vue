@@ -59,8 +59,8 @@
       </div>
     </nav>
     <div class="footer-bot-info-w">
-      <p class="p-body">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
-      <p class="p-body">Design by <span class="brand-span">deploy t/</span></p>
+      <p class="text-base">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
+      <p class="text-base">Design by <span class="brand-span">deploy t/</span></p>
     </div>
   </footer>
 </template>

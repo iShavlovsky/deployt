@@ -17,7 +17,7 @@
       <div class="dd_body"
            ref="elBody">
         <div class="dd_description">
-          <p class="p-body">{{ description }}</p>
+          <p class="text-base">{{ description }}</p>
         </div>
       </div>
     </article>

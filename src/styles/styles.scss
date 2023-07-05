@@ -1,7 +1,7 @@
 /*----------------------- main styles ------------------------------ */
 
 /*------------ Text Style ------------*/
-.p-body {
+.text-base {
   font-family: "Poppins-Regular", serif;
   font-style: normal;
   font-size: em(16);
@@ -12,14 +12,12 @@
 /* scrollBar */
 ::-webkit-scrollbar,
 html ::-webkit-scrollbar {
-  position: absolute;
   height: em(5);
   width: em(5);
 }
 
 ::-webkit-scrollbar-track,
 html ::-webkit-scrollbar-track{
-  position: absolute;
   background: $primary-white;
 }
 

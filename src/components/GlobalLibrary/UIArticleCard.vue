@@ -12,7 +12,7 @@
       <div></div>
       <div class="article-card-info-w">
         <h3 class="uor-work_title">{{ props.heading }}</h3>
-        <p class="p-body"> {{ props.description }} </p>
+        <p class="text-base"> {{ props.description }} </p>
       </div>
     </div>
   </RouterLink>
