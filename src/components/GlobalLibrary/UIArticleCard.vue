@@ -60,10 +60,7 @@ const props = defineProps({
 }
 
 .article-card-info-w {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: em(16);
-    margin-top: em(16);
+  @include col-1-grid(em(16), em(16))
 }
 
 .small-card-img {

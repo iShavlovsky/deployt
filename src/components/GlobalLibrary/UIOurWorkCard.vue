@@ -59,9 +59,9 @@ const props = defineProps({
 }
 
 .our-work-card-info-w {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: em(16);
+  
+  @include col-1-grid(em(16), em(0));
+
   grid-column-start: span 2;
   grid-column-end: span 3;
 }

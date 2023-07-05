@@ -1,6 +1,31 @@
 /*----------------------- main styles ------------------------------ */
 
 /*------------ Text Style ------------*/
+.text-base-up1 {
+  font-family: "Poppins-Light", serif;
+  font-style: normal;
+  font-size: em(26);
+  font-weight: 300;
+  line-height: 120%;
+}
+
+.text-base-up2 {
+  font-family: "Poppins-Regular", serif;
+  font-style: normal;
+  font-size: em(42);
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.text-heading-up2 {
+  font-family: "Montserrat-SemiBold", serif;
+  font-style: normal;
+  font-size: em(42);
+  font-weight: 600;
+  line-height: auto;
+  text-transform: uppercase;
+}
+
 .text-base {
   font-family: "Poppins-Regular", serif;
   font-style: normal;
@@ -9,14 +34,14 @@
   line-height: 160%;
 }
 
-.text-base-up1 {
-  font-family: "Montserrat-SemiBold", serif;
+.text-base-down1 {
+  font-family: "Poppins-Regular", serif;
   font-style: normal;
-  font-size: em(26);
-  font-weight: 600;
-  line-height: auto;
-  text-transform: uppercase;
+  font-size: em(10);
+  font-weight: 400;
+  line-height: 160%;
 }
+
 
 
 /* scrollBar */

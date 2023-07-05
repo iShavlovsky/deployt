@@ -129,9 +129,8 @@ const socialLinks = [
   }
 
   .menu {
-    display: grid;
-    margin-top: em(25);
-    grid-row-gap: em(16);
+    @include col-1-grid(em(16), em(24))
+    
   }
 
   .footer-2-col-content-w {
