@@ -108,29 +108,28 @@ const socialLinks = [
 .footer {
   width: 100%;
   padding: em(100) em(40) em(16) em(40);
-  background-color: $primary-black;
-  border-top: em(1) solid $primary-white;
-  color: $primary-white;
+  background-color: $c-primary-black;
+  border-top: em(1) solid $c-primary-white;
+  color: $c-primary-white;
 
   .nav-footer {
-    @include col-3-grid(em(0))
+    @include m-col-3-grid(em(0))
   }
 
   .footer-nav_logo-w {
     a {
-      @include custom-heading();
+      @include m-custom-heading();
     }
   }
 
   a {
-    @include txt-button();
+    @include m-txt-button();
     font-size: em(16);
-    color: $primary-white;
+    color: $c-primary-white;
   }
 
   .menu {
-    @include col-1-grid(em(16), em(24))
-    
+    @include m-col-1-grid(em(16), em(24))
   }
 
   .footer-2-col-content-w {
@@ -142,7 +141,7 @@ const socialLinks = [
   }
 
   .footer-title {
-    @include custom-heading();
+    @include m-custom-heading();
     font-size: em(16);
   }
 

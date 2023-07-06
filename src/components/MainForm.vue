@@ -103,9 +103,9 @@
     align-items: center;
     flex-direction: row;
     padding: em(16) em(110) em(16) em(110);
-    @include border-white();
-    color: $primary-black;
-    @include txt-button();
+    @include m-border-white();
+    color: $c-primary-black;
+    @include m-txt-button();
     text-transform: uppercase;
   }
 
@@ -114,7 +114,7 @@
   }
 
   .form-label {
-    @include custom-heading(("Montserrat-SemiBold", serif), em(16), 160%);
+    @include m-custom-heading(("Montserrat-SemiBold", serif), em(16), 160%);
   }
 
   .checkbox-input {
@@ -129,15 +129,15 @@
     padding-top: 1.375em;
     padding-bottom: 1.375em;
     padding-left: em(32);
-    border: em(1) solid $primary-white;
-    background-color: $primary-black;
+    border: em(1) solid $c-primary-white;
+    background-color: $c-primary-black;
     transition: all 200ms cubic-bezier(.39, .575, .565, 1);
     color: #f9feff;
     font-size: em(16);
   }
 
   .form-content {
-    @include col-3-grid(em(0))
+    @include m-col-3-grid(em(0))
   }
 
   .form-field {

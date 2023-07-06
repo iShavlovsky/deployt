@@ -1,5 +1,5 @@
 /*------------ texts ------------*/
-@mixin main-h1 ($size: em(110), $height: 100%, $color: $primary-black) {
+@mixin m-main-h1 ($size: em(110), $height: 100%, $color: $c-primary-black) {
   font-family: "Montserrat-Bold", serif;
   font-style: normal;
   font-size: $size;
@@ -10,7 +10,7 @@
   text-transform: uppercase;
 }
 
-@mixin custom-heading ($font-family: ("Montserrat-SemiBold", serif), $size: em(26), $height: 120%,) {
+@mixin m-custom-heading ($font-family: ("Montserrat-SemiBold", serif), $size: em(26), $height: 120%,) {
   font-family: $font-family;
   font-style: normal;
   font-size: $size;
@@ -19,7 +19,7 @@
   text-transform: uppercase;
 }
 
-@mixin txt-body ($size: em(16), $height: 160%) {
+@mixin m-txt-body ($size: em(16), $height: 160%) {
   font-family: "Poppins-Regular", serif;
   font-style: normal;
   font-size: $size;
@@ -28,7 +28,7 @@
 }
 
 
-@mixin txt-button ($size: em(12), $height: 140%) {
+@mixin m-txt-button ($size: em(12), $height: 140%) {
   font-family: "Poppins-Regular", serif;
   font-style: normal;
   font-size: $size;
@@ -39,12 +39,12 @@
 
 
 /*------------ borders ------------*/
-@mixin border-white ($size: em(2), $color: $primary-white) {
+@mixin m-border-white ($size: em(2), $color: $c-primary-white) {
   border: $size solid $color;
 }
 
 /*------------ Grids ------------*/
-@mixin col-3-grid ($mt: em(32)){
+@mixin m-col-3-grid ($mt: em(32)){
   margin-top: $mt;
   display: grid;
   grid-column-gap: em(89);
@@ -54,14 +54,14 @@
 }
 
 // is used to indent text blocks
-@mixin col-1-grid ($row-gap: em(16), $mt: em(0)){
+@mixin m-col-1-grid ($row-gap: em(16), $mt: em(0)){
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: $row-gap;
   margin-top: $mt;
 }
 
-@mixin universal-text (
+@mixin m-universal-text (
   $size: em(26),
   $height: 120%,
   $font: "Poppins-Light",

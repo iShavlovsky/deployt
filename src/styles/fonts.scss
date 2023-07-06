@@ -13,13 +13,13 @@
 
 /*------------ Poppins ------------*/
 @font-face {
-  font-family: "Poppins-Light";
+  font-family: "Light";
   font-display: swap;
   src : url('@/assets/fonts/Poppins/Poppins-Light.woff2') format("woff2");
 }
 
 @font-face {
-  font-family: "Poppins-Medium";
+  font-family: "Medium";
   font-display: swap;
   src : url('@/assets/fonts/Poppins/Poppins-Medium.woff2') format("woff2");
 }
@@ -29,3 +29,5 @@
   font-display: swap;
   src : url('@/assets/fonts/Poppins/Poppins-Regular.woff2') format("woff2");
 }
+
+$ft-body-fonts--light: "Poppins-Light", serif;

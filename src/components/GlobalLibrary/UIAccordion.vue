@@ -172,16 +172,16 @@ const toggleAccordion = () => {
   .dd {
     transition: height 1s ease;
     max-width: em(870);
-    background-color: $primary-black;
+    background-color: $c-primary-black;
     padding: em(0) em(32) em(0) em(32);
     margin-bottom: em(2);
-    border: 2px solid $primary-white;
-    color: $primary-white;
+    border: 2px solid $c-primary-white;
+    color: $c-primary-white;
 
     &.active {
       .dd_head {
         transition: all 150ms;
-        border-bottom: 2px solid $primary-black;
+        border-bottom: 2px solid $c-primary-black;
       }
     }
 
@@ -211,7 +211,7 @@ const toggleAccordion = () => {
           width: 100%;
           height: em(3);
           position: absolute;
-          background-color: $primary-white;
+          background-color: $c-primary-white;
 
         }
       }

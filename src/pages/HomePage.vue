@@ -12,9 +12,10 @@
         <div class="head-subtitle-and-btn-w">
           <div></div>
           <div class="main-header_description-w">
-              <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering cutting-edge
-                solutions with precision and passion.
-              </p>
+            <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering
+              cutting-edge
+              solutions with precision and passion.
+            </p>
             <a href="#"
                class="main-header_btn-link-w">
               <span>Let's make some wild stuff</span>
@@ -28,16 +29,17 @@
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
-          <div class="col-3-grid">
+          <div class="heading-section_grid">
             <h2 class="text-heading-up2">What we do</h2>
             <div class="heading-section_description-content">
-              <p class="text-base-up2">Custom digital solutions for web and mobile. From no-code to custom code, we've got you
+              <p class="text-base-up2">Custom digital solutions for web and mobile. From no-code to custom code, we've
+                got you
                 covered.</p>
             </div>
           </div>
         </div>
         <div class="heading-section">
-          <div class="col-3-grid">
+          <div class="heading-section_grid">
             <div></div>
             <div class="cards-w">
               <article v-for="feature in whatWeDos"
@@ -61,7 +63,8 @@
           <h2 class="text-heading-up2">Tech stack</h2>
           <div>
             <div class="heading-section_description-content">
-              <p class="text-base-up2">Bring your ideas to life with our expert development team. We craft modern websites and
+              <p class="text-base-up2">Bring your ideas to life with our expert development team. We craft modern
+                websites and
                 apps using the latest frameworks and tools, so your business can thrive in the digital
                 domain.</p>
             </div>
@@ -82,7 +85,7 @@
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
-          <div class="col-3-grid">
+          <div class="heading-section_grid">
             <h2 class="text-heading-up2">Our work</h2>
             <div class="heading-section_description-content">
               <p class="text-base-up2">That selection of works showcases some of the latest projects we've we've been up to.</p>
@@ -105,10 +108,11 @@
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
-          <div class="col-3-grid">
+          <div class="heading-section_grid">
             <h2 class="text-heading-up2">Different things to read</h2>
             <div class="heading-section_description-content">
-              <p class="text-base-up1">We write articles based on our own experience and the experience of leading IT industry experts. Sometimes articles are written by an artificial
+              <p class="text-base-up1">We write articles based on our own experience and the experience of leading IT
+                industry experts. Sometimes articles are written by an artificial
                 intelligence, but the articles are still edited by us.</p>
             </div>
           </div>
@@ -130,19 +134,19 @@
 </template>
 
 <script setup>
-import {computed, inject} from 'vue'
-import UIAccordion from "@/components/GlobalLibrary/UIAccordion.vue";
-import UIOurWorkCard from "@/components/GlobalLibrary/UIOurWorkCard.vue";
-import UIArticleCard from "@/components/GlobalLibrary/UIArticleCard.vue";
+import {computed, inject} from 'vue';
+import UIAccordion from '@/components/GlobalLibrary/UIAccordion.vue';
+import UIOurWorkCard from '@/components/GlobalLibrary/UIOurWorkCard.vue';
+import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
 
-const stores = inject('$stores')
+const stores = inject('$stores');
 await stores.content.load('homePage');
 
 const whatWeDos = computed(() => stores.content.item('what-we-dos'));
 const techStacks = computed(() => stores.content.item('tech-stacks'));
 const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
 const articlesToRead = computed(() => stores.content.item('articles-to-reads'));
-stores.seo.setPage('We are software engineers', 'We are software engineers', 200)
+stores.seo.setPage('We are software engineers', 'We are software engineers', 200);
 
 </script>
 
@@ -150,7 +154,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 <style lang="scss">
 
 .what-we-do-card-info-w {
-  @include col-1-grid()
+  @include m-col-1-grid()
 }
 
 .header-animation-w {
@@ -179,16 +183,17 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 .main-header {
   position: relative;
   margin-top: em(-94);
-  color: $primary-white;
+  color: $c-primary-white;
 
   .head-subtitle-and-btn-w {
-    @include col-3-grid(em(24))
-}
+    @include m-col-3-grid(em(24))
+  }
+
   .main-h1 {
-    @include main-h1();
+    @include m-main-h1();
 
     span {
-      color: $primary-white;
+      color: $c-primary-white;
       white-space: nowrap;
     }
   }
@@ -208,11 +213,11 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
       align-items: center;
       flex-direction: row;
       padding: em(16) em(32) em(16) em(32);
-      @include border-white();
-      color: $primary-white;
+      @include m-border-white();
+      color: $c-primary-white;
 
       span {
-        @include txt-button();
+        @include m-txt-button();
         text-transform: uppercase;
       }
     }
@@ -227,15 +232,9 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
     justify-content: space-between;
 
 
-    .col-3-grid {
-    margin-top: em(32);
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-column-gap: em(89);
-    grid-row-gap: em(96);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-  }
+    .heading-section_grid {
+      @include m-col-3-grid()
+    }
 
     .heading-section_description-content {
       max-width: em(870);
@@ -257,7 +256,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        color: $primary-white;
+        color: $c-primary-white;
       }
     }
   }

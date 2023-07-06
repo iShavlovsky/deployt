@@ -32,7 +32,7 @@
 
 <style lang="scss">
 .main-h1 {
-  @include main-h1(em(100));
+  @include m-main-h1(em(100));
 }
 
 .articles-sort-btns-w {
@@ -41,6 +41,6 @@
 }
 
 .articles-sort-w {
-  @include col-3-grid(em(96))
+  @include m-col-3-grid(em(96))
 }
 </style>

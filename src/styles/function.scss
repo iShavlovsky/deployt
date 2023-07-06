@@ -1,11 +1,49 @@
-@function em($pixels, $context: $browser-context-em) {
+@function em($pixels, $context: $var-browser-context-em) {
   @return calc($pixels / $context) * 1em
 }
 
-@function vw($pixels, $context: $browser-context-px){
+@function vw($pixels, $context: $var-browser-context-px){
   @return calc($pixels * $context) * 1vw
 }
 
-@function px($pixels, $context: $browser-context-px){
+@function px($pixels, $context: $var-browser-context-px){
   @return calc($pixels * $context) * 1px
+}
+
+/*------------
+функция customRound округляет число
+если меньше 0.5 то в меньшую сторону,
+если больше или равно то в большую
+------------*/
+@function customRound($number) {
+  $roundedNumber: round($number);
+  $decimalPart: $number - $roundedNumber;
+
+  @if $decimalPart < 0.5 {
+    @return $roundedNumber;
+  } @else {
+    @return $roundedNumber + 1;
+  }
+}
+
+/*------------
+функция fC которая
+------------*/
+@function fC($exp) {
+  $base: $var-browser-context-em;
+  $result: $base;
+
+  @for $i from 1 through abs($exp) {
+    @if $exp > 0 {
+      $result: calc($result * $var-multiply);
+    } @else {
+      $result: calc($result / $var-multiply);
+    }
+  }
+
+  @if $exp > 0 {
+    @return calc(customRound($result) / 16) * 1em;
+  } @else {
+    @return calc(customRound($result) / -16 ) * -1em;
+  }
 }
