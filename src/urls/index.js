@@ -1,15 +1,31 @@
 const content = ['heading', 'description'];
-
 const img = ['name', 'alternativeText', 'url'];
 
-const fieldContent = { fields: content };
 
-const fieldImg = { 'populate[img][fields]': img };
-
-const fieldImgBlogPage = {
-    'populate[thumbnail][fields]': img,
-    'populate[articlePageCover][fields]': img
+const fieldContent = {
+    fields: content
 };
+
+
+const fieldImg = {
+    populate: {
+        img: {
+            fields: img
+        }
+    }
+};
+
+
+const fieldImgBlogPage =   {
+    populate: {
+        thumbnail: {
+            fields: img
+        },
+        articlePageCover: {
+            fields: img
+        }
+    }
+}
 
 const allPageUrl = [
     {

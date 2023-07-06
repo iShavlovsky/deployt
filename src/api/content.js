@@ -1,10 +1,8 @@
 export default (http, urls) => ({
-    async all(name) {
-
-        const endpoints = urls(name);
-
+    async all(key) {
+        const responseData = [];
+        const endpoints = urls(key);
         const requests = endpoints.map(async endpoint => {
-            console.log( endpoint );
             return http.get(endpoint.key, {
                 params: endpoint.params,
                 // headers: {
@@ -12,12 +10,19 @@ export default (http, urls) => ({
                 // },
                 errorAlert: {
                     text: `при выполнении запроса ${endpoint.key}`,
-                    fallback: []
+                    fallback: {
+                        data: []
+                    }
                 }
             });
         });
 
+
         const responses = await Promise.all(requests);
-        console.log(responses);
+        for (const response of responses) {
+            responseData[response.config.url] = response.data.data;
+        }
+        return responseData
+
     }
 });

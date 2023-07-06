@@ -34,7 +34,7 @@ export default function content(rootStore, contentApi, baseURL) {
 
     async function load(key) {
         items.value = await contentApi.all(key);
-        // console.log(items.value);
+        console.log(items.value);
     }
 
     return {

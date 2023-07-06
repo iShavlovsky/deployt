@@ -1,6 +1,7 @@
 <template>
   <MainNavBar/>
   <main class='white-text'>
+    <AppAlerts/>
     <Suspense>
       <template #default>
         <router-view/>
@@ -23,7 +24,7 @@ import MainNavBar from "@/components/MainNavBar.vue";
 import MainFooter from "@/components/MainFooter.vue";
 import MainForm from "@/components/MainForm.vue";
 import UISpinner from "@/components/GlobalLibrary/UISpinner.vue";
-
+import AppAlerts from "@/components/GlobalLibrary/UIAlerts.vue";
 
 </script>
 

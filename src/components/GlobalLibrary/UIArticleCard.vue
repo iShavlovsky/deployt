@@ -9,9 +9,8 @@
            :alt="props.imgAlt">
     </div>
     <div>
-      <div></div>
       <div class="article-card-info-w">
-        <h3 class="text-base-up1">{{ props.heading }}</h3>
+        <h3 class="text-base-up2">{{ props.heading }}</h3>
         <p class="text-base"> {{ props.description }} </p>
       </div>
     </div>
@@ -19,7 +18,6 @@
 </template>
 
 <script setup>
-
 const props = defineProps({
   slug: {
     type: String,
@@ -51,7 +49,7 @@ const props = defineProps({
 <style scoped lang="scss">
 
 .small_card_lb{
-    color: $primary-white;
+    color: $c-primary-white;
 }
 .small-card-img-w {
     width: 100%;
@@ -60,7 +58,7 @@ const props = defineProps({
 }
 
 .article-card-info-w {
-  @include col-1-grid(em(16), em(16))
+  @include m-col-1-grid(em(16), em(16))
 }
 
 .small-card-img {

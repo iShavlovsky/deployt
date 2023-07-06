@@ -1,49 +1,5 @@
 /*----------------------- main styles ------------------------------ */
 
-/*------------ Text Style ------------*/
-.text-base-up1 {
-  font-family: "Poppins-Light", serif;
-  font-style: normal;
-  font-size: em(26);
-  font-weight: 300;
-  line-height: 120%;
-}
-
-.text-base-up2 {
-  font-family: "Poppins-Regular", serif;
-  font-style: normal;
-  font-size: em(42);
-  font-weight: 400;
-  line-height: 120%;
-}
-
-.text-heading-up2 {
-  font-family: "Montserrat-SemiBold", serif;
-  font-style: normal;
-  font-size: em(42);
-  font-weight: 600;
-  line-height: auto;
-  text-transform: uppercase;
-}
-
-.text-base {
-  font-family: "Poppins-Regular", serif;
-  font-style: normal;
-  font-size: em(16);
-  font-weight: 400;
-  line-height: 160%;
-}
-
-.text-base-down1 {
-  font-family: "Poppins-Regular", serif;
-  font-style: normal;
-  font-size: em(10);
-  font-weight: 400;
-  line-height: 160%;
-}
-
-
-
 /* scrollBar */
 ::-webkit-scrollbar,
 html ::-webkit-scrollbar {
@@ -53,20 +9,20 @@ html ::-webkit-scrollbar {
 
 ::-webkit-scrollbar-track,
 html ::-webkit-scrollbar-track{
-  background: $primary-white;
+  background: $c-primary-white;
 }
 
 ::-webkit-scrollbar-thumb,
 html ::-webkit-scrollbar-thumb{
-  background-color: $primary-black;
+  background-color: $c-primary-black;
   border-radius: em(1)
 }
 
 /* general */
 body {
-  font-size: 1.1111111111111112vw;
-  background-color: $primary-black;
-  color: $primary-white;
+  font-size: $var-body-main-size-font;
+  background-color: $c-primary-black;
+  color: $c-primary-white;
 }
 
 section {
@@ -97,7 +53,7 @@ img {
   font-size: em(16);
   font-weight: 700;
   line-height: 100%;
-  color: $primary-white;
+  color: $c-primary-white;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -105,8 +61,8 @@ img {
 .error{
   padding: em(32);
   p{
-    @include custom-heading();
-    color: $error-red;
+    @include m-custom-heading();
+    color: $c-error-red;
   }
 }
 

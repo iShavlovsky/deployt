@@ -1,11 +1,21 @@
-$browser-context-em: 16;
-$browser-context-px: 1;
-$body-main-size-font: 1.1111111111111112vw;
-$breakpoints: (
+$var-browser-context-em: 16;
+$var-browser-context-px: 1;
+$var-body-main-size-font: 1.1111111111111112vw;
+$var-breakpoints: (
         'bp-xl': 1440px,
         'bp-l': 991px,
         'bp-m': 767px,
         'bp-s': 479px
 );
 
-$base-time: 200ms;
+$var-base-animation-time: 200ms;
+
+$fc-major-second: 1.125;
+$fc-minor-third: 1.200;
+$fc-major-third: 1.250;
+$fc-perfect-fourth: 1.333;
+$fc-augmented-fourth: 1.414;
+$fc-perfect-fifth: 1.500;
+$fc-golden-ratio: 1.618;
+
+$var-multiply: $fc-golden-ratio;

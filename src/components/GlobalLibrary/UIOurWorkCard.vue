@@ -7,9 +7,8 @@
            :alt="props.imgAlt">
     </div>
     <div class="grid-main">
-      <div></div>
       <div class="our-work-card-info-w">
-        <h3 class="text-base-up1">{{ props.heading }}</h3>
+        <h3 class="text-heading-up2">{{ props.heading }}</h3>
         <p class="text-base">{{ props.description }}</p>
       </div>
     </div>
@@ -44,7 +43,7 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .big_card_lb {
-  color: $primary-white;
+  color: $c-primary-white;
 }
 
 .our-work-image-w {
@@ -54,13 +53,13 @@ const props = defineProps({
 }
 
 .grid-main {
-  @include col-3-grid(em(32));
+  @include m-col-3-grid(em(32));
   margin-bottom: em(96);
 }
 
 .our-work-card-info-w {
-  
-  @include col-1-grid(em(16), em(0));
+
+  @include m-col-1-grid(em(16), em(0));
 
   grid-column-start: span 2;
   grid-column-end: span 3;

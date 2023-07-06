@@ -54,8 +54,8 @@ const linksNavbar = [
         margin-right: em(32);
 
         a {
-          @include txt-button();
-          color: $primary-white;
+          @include m-txt-button();
+          color: $c-primary-white;
         }
       }
     }
