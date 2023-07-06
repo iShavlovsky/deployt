@@ -1,5 +1,5 @@
 <template>
-  <header class="footer">
+  <footer class="footer">
     <nav class='nav-footer'>
       <div class="footer-nav_logo-w">
         <a class="logo"
@@ -7,7 +7,7 @@
       </div>
       <div class="footer-2-col-content-w">
         <div>
-          <p class="footer-title">Company</p>
+          <h3 class="footer-title">Company</h3>
           <ul class="menu">
             <li v-for="(link, i) in linksCompany"
                 :key="i"
@@ -19,7 +19,7 @@
         </div>
 
         <div>
-          <p class="footer-title">Resources</p>
+          <h3 class="footer-title">Resources</h3>
           <ul class="menu">
             <li v-for="(link, i) in linksResources"
                 :key="i"
@@ -32,7 +32,7 @@
       </div>
 
       <div>
-        <p class="footer-title">About</p>
+        <h3 class="footer-title">About</h3>
         <ul class="menu">
           <li v-for="(link, i) in linksAbout"
               :key="i"
@@ -59,10 +59,10 @@
       </div>
     </nav>
     <div class="footer-bot-info-w">
-      <p class="copy">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
-      <p class="copy">Design by <span class="brand-span">deploy t/</span></p>
+      <p class="text-base">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
+      <p class="text-base">Design by <span class="brand-span">deploy t/</span></p>
     </div>
-  </header>
+  </footer>
 </template>
 
 <script setup>
@@ -110,6 +110,7 @@ const socialLinks = [
   padding: em(100) em(40) em(16) em(40);
   background-color: $primary-black;
   border-top: em(1) solid $primary-white;
+  color: $primary-white;
 
   .nav-footer {
     @include col-3-grid(em(0))
@@ -117,21 +118,19 @@ const socialLinks = [
 
   .footer-nav_logo-w {
     a {
-      @include h3-small();
-      color: $primary-white;
+      @include custom-heading();
     }
   }
 
   a {
     @include txt-button();
-    color: $primary-white;
     font-size: em(16);
+    color: $primary-white;
   }
 
   .menu {
-    display: grid;
-    margin-top: em(25);
-    grid-row-gap: em(16);
+    @include col-1-grid(em(16), em(24))
+    
   }
 
   .footer-2-col-content-w {
@@ -143,8 +142,7 @@ const socialLinks = [
   }
 
   .footer-title {
-    @include h3-small();
-    color: $primary-white;
+    @include custom-heading();
     font-size: em(16);
   }
 
@@ -169,10 +167,6 @@ const socialLinks = [
     opacity: 0.5;
   }
 
-  .copy {
-    @include txt-body;
-    color: $primary-white;
-  }
 
   .brand-span {
     text-transform: uppercase;

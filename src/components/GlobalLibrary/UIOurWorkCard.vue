@@ -9,8 +9,8 @@
     <div class="grid-main">
       <div></div>
       <div class="our-work-card-info-w">
-        <h3 class="our-work_title">{{ props.heading }}</h3>
-        <p class="our-work_description">{{ props.description }}</p>
+        <h3 class="text-base-up1">{{ props.heading }}</h3>
+        <p class="text-base">{{ props.description }}</p>
       </div>
     </div>
   </a>
@@ -53,25 +53,17 @@ const props = defineProps({
   overflow: hidden;
 }
 
-.our-work_title {
-  @include h3-small();
-}
-
 .grid-main {
   @include col-3-grid(em(32));
   margin-bottom: em(96);
 }
 
 .our-work-card-info-w {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: em(16);
+  
+  @include col-1-grid(em(16), em(0));
+
   grid-column-start: span 2;
   grid-column-end: span 3;
-}
-
-.our-work_description {
-  @include txt-body();
 }
 
 .our-work-image {

@@ -12,11 +12,9 @@
         <div class="head-subtitle-and-btn-w">
           <div></div>
           <div class="main-header_description-w">
-            <div class="main-header_description-text">
-              <p>Transform your ideas into digital realities with our skilled team, delivering cutting-edge
+              <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering cutting-edge
                 solutions with precision and passion.
               </p>
-            </div>
             <a href="#"
                class="main-header_btn-link-w">
               <span>Let's make some wild stuff</span>
@@ -31,9 +29,9 @@
       <div class="content-w">
         <div class="heading-section">
           <div class="col-3-grid">
-            <h2>what we do</h2>
+            <h2 class="text-heading-up2">What we do</h2>
             <div class="heading-section_description-content">
-              <p>Custom digital solutions for web and mobile. From no-code to custom code, we've got you
+              <p class="text-base-up2">Custom digital solutions for web and mobile. From no-code to custom code, we've got you
                 covered.</p>
             </div>
           </div>
@@ -45,8 +43,10 @@
               <article v-for="feature in whatWeDos"
                        :key="feature.id"
                        class="card">
-                <h3 class="card_name">{{ feature.heading }}</h3>
-                <p class="card_description">{{ feature.description }}</p>
+                <div class="what-we-do-card-info-w">
+                  <h3 class="text-base-up1">{{ feature.heading }}</h3>
+                  <p class="text-base">{{ feature.description }}</p>
+                </div>
               </article>
             </div>
           </div>
@@ -58,10 +58,10 @@
     <div class="container">
       <div class="content-w">
         <div class="heading-section">
-          <h2>tech stack</h2>
+          <h2 class="text-heading-up2">Tech stack</h2>
           <div>
             <div class="heading-section_description-content">
-              <p>Bring your ideas to life with our expert development team. We craft modern websites and
+              <p class="text-base-up2">Bring your ideas to life with our expert development team. We craft modern websites and
                 apps using the latest frameworks and tools, so your business can thrive in the digital
                 domain.</p>
             </div>
@@ -83,9 +83,9 @@
       <div class="content-w">
         <div class="heading-section">
           <div class="col-3-grid">
-            <h2>our work</h2>
+            <h2 class="text-heading-up2">Our work</h2>
             <div class="heading-section_description-content">
-              <p>That selection of works showcases some of the latest projects we've we've been up to.</p>
+              <p class="text-base-up2">That selection of works showcases some of the latest projects we've we've been up to.</p>
             </div>
           </div>
         </div>
@@ -106,9 +106,9 @@
       <div class="content-w">
         <div class="heading-section">
           <div class="col-3-grid">
-            <h2>Different things to read</h2>
+            <h2 class="text-heading-up2">Different things to read</h2>
             <div class="heading-section_description-content">
-              <p>We write articles based on our own experience and the experience of leading IT industry experts. Sometimes articles are written by an artificial
+              <p class="text-base-up1">We write articles based on our own experience and the experience of leading IT industry experts. Sometimes articles are written by an artificial
                 intelligence, but the articles are still edited by us.</p>
             </div>
           </div>
@@ -126,19 +126,6 @@
       </div>
     </div>
 
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="heading-section">
-        <div class="col-3-grid">
-          <h2>Contact us</h2>
-          <div class="heading-section_description-content">
-            <p>You got a design drawn and you're still looking for developers? Or you don't know where to start? Stop fucking the ox! Let's go do great things
-              for the good of mankind and in the name of Allah</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -162,11 +149,21 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
 <style lang="scss">
 
+.what-we-do-card-info-w {
+  @include col-1-grid()
+}
+
 .header-animation-w {
-  position: absolute;
+  width: 100vw;
+  height: 100%;
+  margin-left: em(-40);
+  margin-top: em(-96);
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
+  background-image: url('@/assets/img/main.webp');
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 .section.cta {
@@ -181,7 +178,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
 
 .main-header {
   position: relative;
-  padding-top: em(271);
+  margin-top: em(-94);
   color: $primary-white;
 
   .head-subtitle-and-btn-w {
@@ -204,18 +201,13 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
     grid-column-start: span 2;
     grid-column-end: span 3;
 
-    .main-header_description-text {
-      p {
-        @include description-low()
-      }
-    }
 
     .main-header_btn-link-w {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      padding: em(16) em(110) em(16) em(110);
+      padding: em(16) em(32) em(16) em(32);
       @include border-white();
       color: $primary-white;
 
@@ -233,7 +225,6 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
     display: flex;
     gap: em(90);
     justify-content: space-between;
-    color: $primary-white;
 
 
     .col-3-grid {
@@ -246,19 +237,11 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
     grid-template-rows: auto;
   }
 
-    h2 {
-      @include h2();
-    }
-
     .heading-section_description-content {
       max-width: em(870);
       margin-bottom: em(95);
       grid-column-start: span 2;
       grid-column-end: span 3;
-
-      p {
-        @include description-hide();
-      }
     }
 
     .cards-w {
@@ -275,15 +258,6 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
         align-items: flex-start;
         justify-content: flex-start;
         color: $primary-white;
-
-        .card_name {
-          @include h3-small();
-        }
-
-        .card_description {
-          margin-top: em(16);
-          @include txt-body()
-        }
       }
     }
   }
