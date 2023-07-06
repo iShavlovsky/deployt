@@ -1,10 +1,10 @@
 <template>
-  <section class="contact-form">
+  <section class="section">
     <div class="container">
       <div class='form-content'>
-        <h2>Contact us</h2>
+        <h2 class="text-heading-up2">Contact us</h2>
         <div class="heading-section_description-content">
-          <p>You got a design drawn and you're still looking for developers? Or you don't know where to start? Stop
+          <p class="text-base-up1">You got a design drawn and you're still looking for developers? Or you don't know where to start? Stop
             fucking the ox! Let's go do great things
             for the good of mankind and in the name of Allah</p>
         </div>
@@ -77,7 +77,7 @@
                    id="checkbox"
                    name="checkbox"
                    data-name="Checkbox">
-            <span class="p12px">
+            <span class="text-base-down1">
               Consent to the privacy policy and the processing of personal data
             </span>
           </label>
@@ -96,10 +96,6 @@
 </script>
 
 <style scoped lang="scss">
-.contact-form {
-  width: 100%;
-  background-color: $primary-black;
-  color: $primary-white;
 
   .form-btn {
     display: flex;
@@ -113,14 +109,12 @@
     text-transform: uppercase;
   }
 
-  .p12px {
-    @include txt-button();
-    margin-left: em(16);
+  .text-base-down1{
+    margin-left: em(10);
   }
 
   .form-label {
-    @include h3-small(em(16));
-    line-height: 160%;
+    @include custom-heading(("Montserrat-SemiBold", serif), em(16), 160%);
   }
 
   .checkbox-input {
@@ -186,18 +180,9 @@
     grid-column: 1 / span 2;
   }
 
-  h2 {
-    @include h2();
-  }
-
   .heading-section_description-content {
     max-width: em(870);
     grid-column-start: span 2;
     grid-column-end: span 3;
-
-    p {
-      @include description-hide();
-    }
   }
-}
 </style>

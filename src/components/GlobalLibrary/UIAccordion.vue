@@ -6,7 +6,7 @@
       <div @click="toggleAccordion"
            class="dd_head"
            ref="dd_head">
-        <h3 class="dd_name">{{ heading }}</h3>
+        <h3 class="text-base-up1">{{ heading }}</h3>
         <div class="dd_btn">
           <div class="dd_btn-line"
                ref="line1"></div>
@@ -16,7 +16,9 @@
       </div>
       <div class="dd_body"
            ref="elBody">
-        <p class="dd_description">{{ description }}</p>
+        <div class="dd_description">
+          <p class="text-base">{{ description }}</p>
+        </div>
       </div>
     </article>
   </div>
@@ -192,10 +194,6 @@ const toggleAccordion = () => {
       justify-content: space-between;
 
 
-      .dd_name {
-        @include h3-small();
-      }
-
       .dd_btn {
         width: em(30);
         height: em(30);
@@ -227,7 +225,6 @@ const toggleAccordion = () => {
         padding: em(24) em(0) em(56) em(0);
         white-space: break-spaces;
         overflow-wrap: break-word;
-        @include txt-body()
       }
     }
   }

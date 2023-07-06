@@ -11,8 +11,8 @@
     <div>
       <div></div>
       <div class="article-card-info-w">
-        <h3 class="uor-work_title">{{ props.heading }}</h3>
-        <p class="our-work_description"> {{ props.description }} </p>
+        <h3 class="text-base-up1">{{ props.heading }}</h3>
+        <p class="text-base"> {{ props.description }} </p>
       </div>
     </div>
   </RouterLink>
@@ -59,26 +59,14 @@ const props = defineProps({
     overflow: hidden;
 }
 
-.uor-work_title {
-        @include h3-small();
-}
 .article-card-info-w {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: em(16);
-    margin-top: em(16);
+  @include col-1-grid(em(16), em(16))
 }
 
-.our-work_description {
-        @include txt-body();
-}
 .small-card-img {
     object-fit: cover;
     height: 100%;
     width: 100%;
-}
-.my-paragraph {
-  /* Ваши стили для параграфов */
 }
 
 </style>
