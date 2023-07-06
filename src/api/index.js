@@ -1,10 +1,11 @@
 import createContentApi from './content.js';
 import { inject } from 'vue';
+import urls from "@/urls/index.js";
 
 export const apiProvideKey = '$api';
 
 export default http => {
-	let content = createContentApi(http);
+	let content = createContentApi(http, urls);
 
 
 	let api = {

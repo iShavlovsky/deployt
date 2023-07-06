@@ -1,21 +1,23 @@
-import getURL from "@/urls/index.js";
-
-export default http => ({
+export default (http, urls) => ({
     async all(name) {
-        let [endpoints] = getURL(name)
-        const responseData = [];
-        for (const endpoint of endpoints) {
 
-            let response = await http
-                .get(endpoint.key, {
+        const endpoints = urls(name);
 
-                    searchParams: endpoint.url
-                    // headers: {
-                    //     Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
-                    // }
-                }).json();
-            responseData[endpoint.key] = response.data;
-        }
-        return responseData;
+        const requests = endpoints.map(async endpoint => {
+            console.log( endpoint );
+            return http.get(endpoint.key, {
+                params: endpoint.params,
+                // headers: {
+                //   Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+                // },
+                errorAlert: {
+                    text: `при выполнении запроса ${endpoint.key}`,
+                    fallback: []
+                }
+            });
+        });
+
+        const responses = await Promise.all(requests);
+        console.log(responses);
     }
-})
+});

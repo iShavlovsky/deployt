@@ -1,5 +1,5 @@
 <template>
-  <header class="footer">
+  <footer class="footer">
     <nav class='nav-footer'>
       <div class="footer-nav_logo-w">
         <a class="logo"
@@ -62,7 +62,7 @@
       <p class="copy">© Deploy Team 2023 - One Horseguards Avenue, Westminster, London, SW1A 2HU</p>
       <p class="copy">Design by <span class="brand-span">deploy t/</span></p>
     </div>
-  </header>
+  </footer>
 </template>
 
 <script setup>

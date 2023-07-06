@@ -1,5 +1,6 @@
 import initContentStore from './content.js'
 import initSeoStore from './seo.js'
+import initAlertsStore from './alerts.js'
 import { inject } from 'vue';
 
 
@@ -10,6 +11,7 @@ export default (api, storage, baseURL) => {
     let rootStore = {};
     rootStore.content = initContentStore(rootStore, api.content, baseURL);
     rootStore.seo = initSeoStore(rootStore);
+    rootStore.alerts = initAlertsStore(rootStore );
 
     return {
         store: rootStore,

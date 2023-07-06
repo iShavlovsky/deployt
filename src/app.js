@@ -5,6 +5,7 @@ import createStoresPlugin from '@/store/index.js';
 import createRouter from '@/router/index.js';
 import seoTagsConnector from '@/connectors/seo-tags.js'
 import createLazyloadPlugin from '@/plugins/vueLazyload.js';
+import httpAlertsConnector from '@/connectors/http-alerts.js';
 
 import {createApp, createSSRApp} from 'vue'
 import { createPinia } from 'pinia'
@@ -28,6 +29,7 @@ export default async (isSsr = false) => {
     const stores = storesPlugin.store;
     const router = createRouter(isSsr);
 
+    httpAlertsConnector(http, stores.alerts);
 
     const createAppByMode = import.meta.env.DEV ? createApp : createSSRApp;
     const app = createAppByMode(App);

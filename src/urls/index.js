@@ -1,43 +1,35 @@
-const content = [
-    'heading',
-    'description'
-];
+const content = ['heading', 'description'];
 
-const img = [
-    'name',
-    'alternativeText',
-    'url'
-];
+const img = ['name', 'alternativeText', 'url'];
 
-const fieldContent = {
-    'fields': content.join(',')
-}
+const fieldContent = { fields: content };
 
-const fieldImg = {
-    'populate[img][fields]': img.join(',')
-}
-const fieldImgBlogPage  = {
-    'populate[thumbnail][fields]': img.join(','),
-    'populate[articlePageCover][fields]': img.join(',')
-}
+const fieldImg = { 'populate[img][fields]': img };
+
+const fieldImgBlogPage = {
+    'populate[thumbnail][fields]': img,
+    'populate[articlePageCover][fields]': img
+};
 
 const allPageUrl = [
     {
-        'homePage': [
-            {key: 'what-we-dos', url: fieldContent},
-            {key: 'tech-stacks', url: fieldContent},
-            {key: 'accomplished-projects', url: fieldImg},
-            {key: 'articles-to-reads', url: fieldImgBlogPage}
+        homePage: [
+            { key: 'what-we-dos', params: fieldContent },
+            { key: 'tech-stacks', params: fieldContent },
+            { key: 'accomplished-projects', params: fieldImg },
+            { key: 'articles-to-reads', params: fieldImgBlogPage }
         ]
     },
     {
-        'blogPage': [
-            {key: 'articles-to-reads', url: fieldImgBlogPage}
+        blogPage: [
+            { key: 'articles-to-reads', params: fieldImgBlogPage }
         ]
-    }]
+    }
+];
+
 export default function getURL(pageKey) {
     return allPageUrl
-        .map(obj => ~Object.keys(obj)
-        .indexOf(pageKey) && obj[pageKey])
-        .filter(v => v);
+      .filter(obj => Object.keys(obj).includes(pageKey))
+      .map(obj => obj[pageKey])
+      .flat();
 }
