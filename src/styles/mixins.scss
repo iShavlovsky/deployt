@@ -1,16 +1,6 @@
 /*------------ texts ------------*/
-@mixin m-main-h1 ($size: em(110), $height: 100%, $color: $c-primary-black) {
-  font-family: "Montserrat-Bold", serif;
-  font-style: normal;
-  font-size: $size;
-  font-weight: 700;
-  line-height: $height;
-  color: $color;
-  letter-spacing: -0.007em;
-  text-transform: uppercase;
-}
 
-@mixin m-custom-heading ($font-family: ("Montserrat-SemiBold", serif), $size: em(26), $height: 120%,) {
+@mixin m-custom-heading ($font-family: $ft-header-fonts--semibold, $size: em(26), $height: 120%,) {
   font-family: $font-family;
   font-style: normal;
   font-size: $size;
@@ -19,17 +9,9 @@
   text-transform: uppercase;
 }
 
-@mixin m-txt-body ($size: em(16), $height: 160%) {
-  font-family: "Poppins-Regular", serif;
-  font-style: normal;
-  font-size: $size;
-  font-weight: 400;
-  line-height: $height;
-}
-
 
 @mixin m-txt-button ($size: em(12), $height: 140%) {
-  font-family: "Poppins-Regular", serif;
+  font-family: $ft-body-fonts--regular;
   font-style: normal;
   font-size: $size;
   font-weight: 500;

@@ -1,33 +1,42 @@
 /*------------ Montserrat ------------*/
 @font-face {
-  font-family: "Montserrat-Bold";
+  font-family: "Header-Bold";
   font-display: swap;
   src : url('@/assets/fonts/Monserrat/Montserrat-Bold.woff2') format("woff2");
 }
 
 @font-face {
-  font-family: "Montserrat-SemiBold";
+  font-family: "Header-SemiBold";
   font-display: swap;
   src : url('@/assets/fonts/Monserrat/Montserrat-SemiBold.woff2') format("woff2");
 }
 
 /*------------ Poppins ------------*/
 @font-face {
-  font-family: "Light";
+  font-family: "Basee-Light";
   font-display: swap;
   src : url('@/assets/fonts/Poppins/Poppins-Light.woff2') format("woff2");
 }
 
 @font-face {
-  font-family: "Medium";
-  font-display: swap;
-  src : url('@/assets/fonts/Poppins/Poppins-Medium.woff2') format("woff2");
-}
-
-@font-face {
-  font-family: "Poppins-Regular";
+  font-family: "Basee-Regular";
   font-display: swap;
   src : url('@/assets/fonts/Poppins/Poppins-Regular.woff2') format("woff2");
 }
 
-$ft-body-fonts--light: "Poppins-Light", serif;
+@font-face {
+  font-family: "Basee-Medium";
+  font-display: swap;
+  src : url('@/assets/fonts/Poppins/Poppins-Medium.woff2') format("woff2");
+}
+
+
+/*------------ Fonts Variable ------------*/
+// Header
+$ft-header-fonts--bold: "Header-Bold", serif;
+$ft-header-fonts--semibold: "Header-SemiBold", serif;
+
+// Body
+$ft-body-fonts--light: "Basee-Light", serif;
+$ft-body-fonts--regular: "Basee-Regular", serif;
+$ft-body-fonts--medium: "Basee-Medium", serif;

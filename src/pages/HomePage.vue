@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <header class="main-header">
-        <h1 class="main-h1">
+        <h1 class="text-heading-up4">
           We are <span>software engineers</span>
         </h1>
         <div class="head-subtitle-and-btn-w">
@@ -195,9 +195,9 @@ seoStore.value.setPage('We are software engineers',
     @include m-col-3-grid(em(24))
   }
 
-  .main-h1 {
-    @include m-main-h1();
-
+  .text-heading-up4 {
+    color: $c-primary-black;
+    
     span {
       color: $c-primary-white;
       white-space: nowrap;
