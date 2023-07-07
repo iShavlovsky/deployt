@@ -30,9 +30,8 @@ export default function content(rootStore, contentApi, baseURL) {
     const itemArticle = (collection, slug) => items.value[collection]?.find(item => item.attributes.slug === slug);
     const has = nameCol => Object.keys(items.value).find(collection => collection === nameCol);
 
-    async function load(keys) {
-
-        items.value = await contentApi.all(keys)
+    async function load(requests) {
+        items.value = await contentApi.all(requests)
         // let matchFound = false;
         // for (let key in items.value) {
         //     if (key in response) {

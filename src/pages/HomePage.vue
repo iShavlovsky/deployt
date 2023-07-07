@@ -147,7 +147,38 @@ import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
 import UIButton from '@/components/GlobalLibrary/UIButton.vue';
 
 const stores = inject('$stores');
-await stores.content.load('homePage');
+
+const content = ['heading', 'description', 'slug', 'link'];
+const img = {fields: ['name', 'alternativeText', 'url']};
+
+const requests = {
+  'what-we-dos': {
+    sort: 'createdAt:desc',
+    fields: content
+  },
+  'tech-stacks': {
+    sort: 'createdAt:desc',
+    fields: content
+  },
+  'accomplished-projects': {
+    sort: 'createdAt:desc',
+    fields: content,
+    populate: img
+
+  },
+  'articles-to-reads': {
+    sort: 'createdAt:desc',
+    pagination: {
+      limit: 3
+    },
+    fields: content,
+    populate:{
+      thumbnail:img
+    }
+  }
+};
+
+await stores.content.load(requests);
 
 const contentStore = computed(() => stores.content);
 const seoStore = computed(() => stores.seo);
@@ -204,7 +235,7 @@ seoStore.value.setPage('We are software engineers',
 
   .text-heading-up4 {
     color: $c-primary-black;
-
+    @include m-main-h1();
     span {
       color: $c-primary-white;
       white-space: nowrap;

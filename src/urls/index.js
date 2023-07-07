@@ -33,11 +33,6 @@ function config(obj1, obj2 = {}, name = '') {
         obj2 = {};
     }
 
-    // if (typeof obj2 === 'string') {
-    //     name = obj2;
-    //     obj2 = {};
-    // }
-
     const objects = {...(obj1 || {}), ...(obj2 || {})};
     return name !== '' ? {[name]: objects} : objects;
 }
@@ -84,7 +79,7 @@ const allPageUrl = [
         blogPage: [
             {
                 key: 'articles-to-reads',
-                params:config(addThumbnail, addArticlePageCover, 'populate')
+                params: config(addThumbnail, addArticlePageCover, 'populate')
             }
         ]
     }

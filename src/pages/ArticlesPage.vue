@@ -14,20 +14,22 @@
         <div class="article-seacrh-w">
           <input type="text">
         </div>
-
       </div>
 
-      <div class="post-grid">
-        <UIArticleCard v-for="articles in articlesToRead"
-                       :key="articles.id"
-                       :slug="articles.link"
-                       :imgUrl="articles.imgUrl"
-                       :imgAlt="articles.imgAlt"
-                       :heading="articles.heading"
-                       :description="articles.description"
-        />
-      </div>
+      <div v-if="articlesToRead">
+        <div class="post-grid">
+          <UIArticleCard v-for="articles in articlesToRead"
+                         :key="articles.id"
+                         :slug="articles.link"
+                         :imgUrl="articles.imgUrl"
+                         :imgAlt="articles.imgAlt"
+                         :heading="articles.heading"
+                         :description="articles.description"
+          />
+        </div>
 
+      </div>
+      <div v-else>Articles not found</div>
     </div>
   </section>
 </template>
@@ -36,9 +38,24 @@
 import {computed, inject} from 'vue';
 import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
 
-
 const stores = inject('$stores');
-await stores.content.load('blogPage');
+const content = ['heading', 'description', 'slug', 'link'];
+const img = {fields: ['name', 'alternativeText', 'url']};
+
+const requests = {
+  'articles-to-reads': {
+    sort: 'createdAt:desc',
+    pagination: {
+      limit: 3
+    },
+    fields: content,
+    populate: {
+      thumbnail: img
+    }
+  }
+};
+
+await stores.content.load(requests);
 
 const contentStore = computed(() => stores.content);
 const seoStore = computed(() => stores.seo);

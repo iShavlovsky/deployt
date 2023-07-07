@@ -6,7 +6,7 @@ export default () => {
   const sizes = useWindowResizes()
   const width = sizes.vw
 
-  if (width < 980) {
+  if (width < 480) {
     item.size = 'px';
     item.factor = 1;
   }
