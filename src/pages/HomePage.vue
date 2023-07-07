@@ -6,7 +6,7 @@
     </div>
     <div class="container">
       <header class="main-header">
-        <h1 class="main-h1">
+        <h1 class="text-heading-up4">
           We are <span>software engineers</span>
         </h1>
         <div class="head-subtitle-and-btn-w">
@@ -15,6 +15,12 @@
             <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering
               cutting-edge solutions with precision and passion.
             </p>
+            <UIButton :btnDestination="3"
+                      :btnType="'stroke-button'"
+                      :title="'ААААА'"/>
+            <UIButton :btnDestination="3"
+                      :btnType="'stroke-button'"
+                      :title="'ААААА'"/>
             <a href="#"
                class="main-header_btn-link-w">
               <span>Let's make some wild stuff</span>
@@ -125,7 +131,7 @@
                          :imgAlt="articles.imgAlt"
                          :heading="articles.heading"
                          :description="articles.description"
-                         :artbody="articles.artbody"/>
+          />
         </div>
       </div>
     </div>
@@ -138,6 +144,7 @@ import {computed, inject} from 'vue';
 import UIAccordion from '@/components/GlobalLibrary/UIAccordion.vue';
 import UIOurWorkCard from '@/components/GlobalLibrary/UIOurWorkCard.vue';
 import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
+import UIButton from '@/components/GlobalLibrary/UIButton.vue';
 
 const stores = inject('$stores');
 await stores.content.load('homePage');
@@ -195,8 +202,8 @@ seoStore.value.setPage('We are software engineers',
     @include m-col-3-grid(em(24))
   }
 
-  .main-h1 {
-    @include m-main-h1();
+  .text-heading-up4 {
+    color: $c-primary-black;
 
     span {
       color: $c-primary-white;
@@ -229,6 +236,7 @@ seoStore.value.setPage('We are software engineers',
     }
   }
 }
+
 
 .content-w {
 

@@ -1,7 +1,7 @@
 import { debounce } from "@/utils/events";
 import { reactive, inject } from "vue";
 
-export default (delay = 300) => {
+export default (delay = 100) => {
 	const isSsr = inject('isSsr');
 	const sizes = reactive(getSizes(isSsr));
 

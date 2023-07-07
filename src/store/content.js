@@ -32,21 +32,20 @@ export default function content(rootStore, contentApi, baseURL) {
 
     async function load(keys) {
 
-        let response = await contentApi.all(keys);
-
-        let matchFound = false;
-        for (let key in items.value) {
-            if (key in response) {
-                items.value[key] = response[key];
-                matchFound = true;
-                console.log(key,1);
-            }
-        }
-        if (!matchFound) {
-            items.value = response
-            console.log(items.value, 2);
-        }
-        // console.log(items.value);
+        items.value = await contentApi.all(keys)
+        // let matchFound = false;
+        // for (let key in items.value) {
+        //     if (key in response) {
+        //         items.value[key] = response[key];
+        //         matchFound = true;
+        //         console.log(key,1);
+        //     }
+        // }
+        // if (!matchFound) {
+        //     items.value = response
+        //     console.log(items.value, 2);
+        // }
+        console.log(items.value);
     }
 
 

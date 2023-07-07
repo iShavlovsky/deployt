@@ -1,5 +1,5 @@
-const content = { fields: ['heading', 'description'] };
-const img = { fields: ['name', 'alternativeText', 'url'] };
+const content = {fields: ['heading', 'description', 'slug', 'link']};
+const img = {fields: ['name', 'alternativeText', 'url']};
 
 const addImg = {
     img: img
@@ -9,26 +9,37 @@ const addArticlePageCover = {
     articlePageCover: img
 };
 
-
 const addThumbnail = {
     thumbnail: img
 };
 
-function populate(obj1, obj2) {
+const addSort = param => {
+    return {sort: param};
+};
+
+const addLimit = param => {
     return {
-        populate: {
-            ...(obj1 || {}),
-            ...(obj2 || {})
+        pagination: {
+            limit: param
         }
     };
-}
+};
 
-function all(obj1, obj2) {
-    return {
-            ...(obj1 || {}),
-            ...(obj2 || {})
+function config(obj1, obj2 = {}, name = '') {
+    if (Array.isArray(obj2)) {
+        obj2 = obj2.reduce((merged, item) => ({...merged, ...item}), {});
+    } else if (typeof obj2 === 'string') {
+        name = obj2;
+        obj2 = {};
+    }
 
-    };
+    // if (typeof obj2 === 'string') {
+    //     name = obj2;
+    //     obj2 = {};
+    // }
+
+    const objects = {...(obj1 || {}), ...(obj2 || {})};
+    return name !== '' ? {[name]: objects} : objects;
 }
 
 const allPageUrl = [
@@ -36,19 +47,36 @@ const allPageUrl = [
         homePage: [
             {
                 key: 'what-we-dos',
-                params: content
+                params: config(
+                  addSort('createdAt:desc'),
+                  content)
             },
             {
                 key: 'tech-stacks',
-                params: content
+                params: config(
+                  addSort('createdAt:desc'),
+                  content)
             },
             {
                 key: 'accomplished-projects',
-                params: populate(addImg)
+                params: config(
+                  addSort('createdAt:desc'),
+                  [
+                      content,
+                      config(addImg, 'populate')
+                  ]
+                )
             },
             {
                 key: 'articles-to-reads',
-                params: all(content, populate(addThumbnail))
+                params: config(
+                  content,
+                  [
+                      addSort('createdAt:desc'),
+                      addLimit(3),
+                      config(addThumbnail, 'populate')
+                  ]
+                )
             }
         ]
     },
@@ -56,7 +84,7 @@ const allPageUrl = [
         blogPage: [
             {
                 key: 'articles-to-reads',
-                params: populate(addThumbnail, addArticlePageCover)
+                params:config(addThumbnail, addArticlePageCover, 'populate')
             }
         ]
     }
