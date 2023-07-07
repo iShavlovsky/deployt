@@ -38,13 +38,16 @@ export default (http, urls) => ({
             });
         });
 
-
         const responses = await Promise.all(requests);
         for (const response of responses) {
             responseData[response.config.url] = response.data.data;
         }
+<<<<<<< HEAD
         return responseData
 
 >>>>>>> bd8c0f7a (добавили шрифтонатор 3к, переписал запросы на axios, добавили)
+=======
+        return responseData;
+>>>>>>> 0b8378a9 (обновил)
     }
 })

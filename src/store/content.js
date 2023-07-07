@@ -1,21 +1,20 @@
 import {ref} from 'vue';
 
 export default function content(rootStore, contentApi, baseURL) {
-    const items = ref([]);
+    const items = ref({});
     const url = baseURL.replace('/api/', '');
 
     const item = key => items.value[key].map(item => {
-        const articlebody = item.attributes.articleBody || '';
-        // const link = item.attributes.link || '#';
+        const i = item.attributes;
+        const articlebody = i.articleBody || '';
 
-        const link = item.attributes.link ? item.attributes.link :
-          item.attributes.slug ? item.attributes.slug : '#';
+        const link = i.link ? i.link : i.slug ? i.slug : '#';
 
-        const imgUrl = item.attributes.img ? url + item.attributes.img.data.attributes.url :
-          item.attributes.thumbnail ? url + item.attributes.thumbnail.data.attributes.url : '#';
+        const imgUrl = i.img ? url + i.img.data.attributes.url :
+          i.thumbnail ? url + i.thumbnail.data.attributes.url : '#';
 
-        const imgAlt = item.attributes.img ? item.attributes.img.data.attributes.alternativeText :
-          item.attributes.thumbnail ? item.attributes.thumbnail.data.attributes.alternativeText : 'decorative';
+        const imgAlt = i.img ? i.img.data.attributes.alternativeText :
+          i.thumbnail ? i.thumbnail.data.attributes.alternativeText : 'decorative';
 
         return {
             id: item.id,
@@ -29,13 +28,27 @@ export default function content(rootStore, contentApi, baseURL) {
     });
 
     const itemArticle = (collection, slug) => items.value[collection]?.find(item => item.attributes.slug === slug);
-    const has = id => item(id) !== undefined;
+    const has = nameCol => Object.keys(items.value).find(collection => collection === nameCol);
 
+    async function load(keys) {
 
-    async function load(key) {
-        items.value = await contentApi.all(key);
-        console.log(items.value);
+        let response = await contentApi.all(keys);
+
+        let matchFound = false;
+        for (let key in items.value) {
+            if (key in response) {
+                items.value[key] = response[key];
+                matchFound = true;
+                console.log(key,1);
+            }
+        }
+        if (!matchFound) {
+            items.value = response
+            console.log(items.value, 2);
+        }
+        // console.log(items.value);
     }
+
 
     return {
         items,
