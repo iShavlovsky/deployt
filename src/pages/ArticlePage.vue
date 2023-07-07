@@ -4,13 +4,6 @@
       <div class="content-w">
         <div class="heading-section">
           <div v-if="hasContent">
-<<<<<<< HEAD
-            <h1>{{ headingBlog }}</h1>
-            <!--            <div class="page-cover">-->
-            <!--              <img v-lazy="pageCover"-->
-            <!--                   :alt="altCover">-->
-            <!--            </div>-->
-=======
             <h1 class="text-heading-up2">
               {{ headingBlog }}
             </h1>
@@ -21,11 +14,9 @@
               <img v-lazy="pageCover"
                    :alt="altCover">
             </div>
->>>>>>> 0b8378a9 (обновил)
             <div class="rich-block"
-                 v-html="bodyPage">
+                 v-html="bodyArticle">
             </div>
-            {{bodyPage2}}
           </div>
           <div v-else>Product not found</div>
         </div>
@@ -37,7 +28,7 @@
 <script setup>
 import {computed, inject} from 'vue';
 import {useRoute} from 'vue-router';
-import * as cheerio from 'cheerio';
+import parseRichText from '@/plugins/parseRichText.js';
 
 const route = useRoute();
 const stores = inject('$stores');
@@ -48,7 +39,7 @@ const seoStore = computed(() => stores.seo);
 const contentStore = computed(() => stores.content);
 const hasContent = computed(() => contentStore.value.has('articles-to-reads') !== undefined);
 const id = computed(() => route.params.id);
-
+const baseUrlPrefix = computed(() => contentStore.value.url);
 const articlesToRead = computed(() => contentStore.value.itemArticle('articles-to-reads', id.value));
 
 const replaces = {
@@ -63,45 +54,6 @@ const replaces = {
   'ul': 'rich-class-ul'
 };
 
-<<<<<<< HEAD
-function addPrefix(html) {
-  const $ = cheerio.load(html, { decodeEntities: false });
-
-  function traverse(node) {
-    if (node.type === 'tag') {
-      const replaceClass = replaces[node.name];
-
-      if (replaceClass) {
-        $(node).addClass(replaceClass);
-      }
-
-      if (node.name === 'img' && node.attribs['src']) {
-        const { src } = node.attribs;
-        if (src && !src.startsWith('http')) {
-          node.attribs['src'] = `${contentStore.value.url}${src}`;
-        }
-      }
-    }
-
-    if (node.children) {
-      node.children.forEach(traverse);
-    }
-  }
-
-  traverse($.root()[0]);
-  return $.html();
-}
-
-
-const headingBlog = articlesToRead.value.attributes.heading;
-const pageCover = contentStore.value.url + articlesToRead.value.attributes.articlePageCover.data[0].attributes.url;
-const altCover = articlesToRead.value.attributes.articlePageCover.data[0].attributes.alternativeText;
-const bodyPage = addPrefix(articlesToRead.value.attributes.articleBody);
-const bodyPage2 = articlesToRead.value.attributes.body2
-
-console.log(bodyPage2);
-
-=======
 const i = articlesToRead.value.attributes
 const headingBlog = i.heading;
 const descriptionBlog = i.description;
@@ -113,11 +65,10 @@ const bodyArticle = computed(() =>
 
 
 seoStore.value.setPage(headingBlog, descriptionBlog, 200);
->>>>>>> 0b8378a9 (обновил)
 </script>
 
 <style scoped lang="scss">
 .page-cover {
-  position: absolute;
+  position: relative;
 }
 </style>
