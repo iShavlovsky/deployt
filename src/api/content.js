@@ -17,12 +17,10 @@ export default (http, urls) => ({
             });
         });
 
-
         const responses = await Promise.all(requests);
         for (const response of responses) {
             responseData[response.config.url] = response.data.data;
         }
-        return responseData
-
+        return responseData;
     }
 });

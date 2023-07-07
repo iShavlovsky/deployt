@@ -1,44 +1,63 @@
-const content = ['heading', 'description'];
-const img = ['name', 'alternativeText', 'url'];
+const content = { fields: ['heading', 'description'] };
+const img = { fields: ['name', 'alternativeText', 'url'] };
 
+const addImg = {
+    img: img
+};
 
-const fieldContent = {
-    fields: content
+const addArticlePageCover = {
+    articlePageCover: img
 };
 
 
-const fieldImg = {
-    populate: {
-        img: {
-            fields: img
-        }
-    }
+const addThumbnail = {
+    thumbnail: img
 };
 
-
-const fieldImgBlogPage =   {
-    populate: {
-        thumbnail: {
-            fields: img
-        },
-        articlePageCover: {
-            fields: img
+function populate(obj1, obj2) {
+    return {
+        populate: {
+            ...(obj1 || {}),
+            ...(obj2 || {})
         }
-    }
+    };
+}
+
+function all(obj1, obj2) {
+    return {
+            ...(obj1 || {}),
+            ...(obj2 || {})
+
+    };
 }
 
 const allPageUrl = [
     {
         homePage: [
-            { key: 'what-we-dos', params: fieldContent },
-            { key: 'tech-stacks', params: fieldContent },
-            { key: 'accomplished-projects', params: fieldImg },
-            { key: 'articles-to-reads', params: fieldImgBlogPage }
+            {
+                key: 'what-we-dos',
+                params: content
+            },
+            {
+                key: 'tech-stacks',
+                params: content
+            },
+            {
+                key: 'accomplished-projects',
+                params: populate(addImg)
+            },
+            {
+                key: 'articles-to-reads',
+                params: all(content, populate(addThumbnail))
+            }
         ]
     },
     {
         blogPage: [
-            { key: 'articles-to-reads', params: fieldImgBlogPage }
+            {
+                key: 'articles-to-reads',
+                params: populate(addThumbnail, addArticlePageCover)
+            }
         ]
     }
 ];

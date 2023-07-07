@@ -13,8 +13,7 @@
           <div></div>
           <div class="main-header_description-w">
             <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering
-              cutting-edge
-              solutions with precision and passion.
+              cutting-edge solutions with precision and passion.
             </p>
             <a href="#"
                class="main-header_btn-link-w">
@@ -88,7 +87,8 @@
           <div class="heading-section_grid">
             <h2 class="text-heading-up2">Our work</h2>
             <div class="heading-section_description-content">
-              <p class="text-base-up2">That selection of works showcases some of the latest projects we've we've been up to.</p>
+              <p class="text-base-up2">That selection of works showcases some of the latest projects we've we've been up
+                to.</p>
             </div>
           </div>
         </div>
@@ -142,12 +142,18 @@ import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
 const stores = inject('$stores');
 await stores.content.load('homePage');
 
-const whatWeDos = computed(() => stores.content.item('what-we-dos'));
-const techStacks = computed(() => stores.content.item('tech-stacks'));
-const accomplishedProjects = computed(() => stores.content.item('accomplished-projects'));
-const articlesToRead = computed(() => stores.content.item('articles-to-reads'));
-stores.seo.setPage('We are software engineers', 'We are software engineers', 200);
+const contentStore = computed(() => stores.content);
+const seoStore = computed(() => stores.seo);
 
+
+const whatWeDos = computed(() => contentStore.value.item('what-we-dos'));
+const techStacks = computed(() => contentStore.value.item('tech-stacks'));
+const accomplishedProjects = computed(() => contentStore.value.item('accomplished-projects'));
+const articlesToRead = computed(() => contentStore.value.item('articles-to-reads'));
+
+seoStore.value.setPage('We are software engineers',
+    'Transform your ideas into digital realities with our skilled team, delivering\n' +
+    'cutting-edge solutions with precision and passion.', 200);
 </script>
 
 
@@ -165,7 +171,7 @@ stores.seo.setPage('We are software engineers', 'We are software engineers', 200
   max-height: 70vh;
   overflow: hidden;
   z-index: -1;
-  background-image: url('@/assets/img/main.webp');
+  //background-image: url('@/assets/img/main.webp');
   background-position: 50% 50%;
   background-size: cover;
 }

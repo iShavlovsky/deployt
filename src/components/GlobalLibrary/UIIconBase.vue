@@ -35,8 +35,6 @@ const props = defineProps({
     default: 'currentColor'
   }
 })
-
-
 const screenSize = () => {
   let size = 'em';
   let factor = 16;
