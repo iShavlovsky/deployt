@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_test_headings",
+  "info": {
+    "displayName": "heading",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "title default",
+      "minLength": 3
+    },
+    "description": {
+      "type": "text",
+      "default": "description default",
+      "required": true,
+      "minLength": 3
+    }
+  }
+}

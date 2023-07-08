@@ -5,9 +5,9 @@ export default http => ({
           .map(async ([key, endpoint]) => {
             return http.get(key, {
                 params: endpoint,
-                // headers: {
-                //   Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
-                // },
+                headers: {
+                  Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+                },
                 errorAlert: {
                     text: `при выполнении запроса ${key}`,
                     fallback: {

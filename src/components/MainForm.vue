@@ -114,7 +114,7 @@
   }
 
   .form-label {
-    @include m-custom-heading(("Montserrat-SemiBold", serif), em(16), 160%);
+    @include m-custom-heading(em(16), 160%);
   }
 
   .checkbox-input {

@@ -5,5 +5,5 @@ module.exports = {
     withCount: true,
   },
   // baseURL: 'https://api.deployteam.ru/'
-  baseURL: 'http://localhost:1337'
+  baseURL: "http://localhost:1337"
 };

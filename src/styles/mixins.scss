@@ -10,8 +10,8 @@
   text-transform: uppercase;
 }
 
-@mixin m-custom-heading ($font-family: ("Montserrat-SemiBold", serif), $size: em(26), $height: 120%,) {
-  font-family: $font-family;
+@mixin m-custom-heading ($size: em(26), $height: 120%,) {
+  font-family: "Montserrat-SemiBold", serif;
   font-style: normal;
   font-size: $size;
   font-weight: 600;

@@ -147,9 +147,9 @@ import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
 import UIButton from '@/components/GlobalLibrary/UIButton.vue';
 
 const stores = inject('$stores');
-
 const content = ['heading', 'description', 'slug', 'link'];
-const img = {fields: ['name', 'alternativeText', 'url']};
+const image = {fields: ['name', 'alternativeText', 'url', "formats"]};
+
 
 const requests = {
   'what-we-dos': {
@@ -163,8 +163,9 @@ const requests = {
   'accomplished-projects': {
     sort: 'createdAt:desc',
     fields: content,
-    populate: img
-
+    populate: {
+      img: image
+    }
   },
   'articles-to-reads': {
     sort: 'createdAt:desc',
@@ -172,8 +173,8 @@ const requests = {
       limit: 3
     },
     fields: content,
-    populate:{
-      thumbnail:img
+    populate: {
+      thumbnail: image
     }
   }
 };
@@ -182,7 +183,6 @@ await stores.content.load(requests);
 
 const contentStore = computed(() => stores.content);
 const seoStore = computed(() => stores.seo);
-
 
 const whatWeDos = computed(() => contentStore.value.item('what-we-dos'));
 const techStacks = computed(() => contentStore.value.item('tech-stacks'));
@@ -236,6 +236,7 @@ seoStore.value.setPage('We are software engineers',
   .text-heading-up4 {
     color: $c-primary-black;
     @include m-main-h1();
+
     span {
       color: $c-primary-white;
       white-space: nowrap;

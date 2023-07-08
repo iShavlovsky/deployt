@@ -66,6 +66,11 @@
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "head": {
+      "type": "component",
+      "repeatable": false,
+      "component": "test.heading"
     }
   }
 }

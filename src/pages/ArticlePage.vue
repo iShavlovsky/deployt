@@ -5,17 +5,18 @@
         <div class="heading-section">
           <div v-if="articlesToRead">
             <h1 class="text-heading-up2">
-              {{ content.headingBlog }}
+              {{ content.heading }}
             </h1>
             <p class="text-base-up2">
-              {{ content.descriptionBlog }}
+              {{ content.description }}
             </p>
             <div class="page-cover">
-              <img v-lazy="content.pageCover"
-                   :alt="content.altCover">
+              <img :src="content.imgUrl"
+                   :alt="content.imgAlt">
             </div>
-            <div class="rich-block"
-                 v-html="content.bodyArticle">
+            <div v-once
+                 class="rich-block"
+                 v-html="bodyArticle.value">
             </div>
           </div>
           <div v-else>Article not found</div>
@@ -73,23 +74,11 @@ const replaces = {
   'table': 'rich-class-table'
 };
 
-const contentsCreate = () => {
-  const i = articlesToRead.value.attributes;
-  const htmlString = i.articleBody;
-  return {
-    headingBlog: i.heading,
-    descriptionBlog: i.description,
-    pageCover: baseUrlPrefix.value + i.articlePageCover.data[0].attributes.url,
-    altCover: i.articlePageCover.data[0].attributes.alternativeText,
-    bodyArticle: computed(() => parseRichText(htmlString, replaces, baseUrlPrefix.value))
-  };
-};
+const content = articlesToRead.value ? articlesToRead.value : false;
+const bodyArticle = computed(() => parseRichText(content.articlebody, replaces, baseUrlPrefix.value))
 
-const content = articlesToRead.value ? contentsCreate() : undefined;
-
-
-const title = content ? content.headingBlog : 'Article not found';
-const description = content ? content.descriptionBlog : 'Article not found';
+const title = content ? content.heading : 'Article not found';
+const description = content ? content.description : 'Article not found';
 const status = content ? 200 : 404;
 seoStore.value.setPage(title, description, status);
 
