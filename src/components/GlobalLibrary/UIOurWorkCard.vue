@@ -3,7 +3,7 @@
      :href="props.link">
     <div class="our-work-image-w">
       <img class="our-work-image"
-           v-lazy="props.imgUrl"
+           :src="props.imgUrl"
            :alt="props.imgAlt">
     </div>
     <div class="grid-main">

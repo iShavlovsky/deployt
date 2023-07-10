@@ -1,9 +1,9 @@
 import {createMemoryHistory, createRouter, createWebHistory} from 'vue-router';
-// import HomeView from '../pages/HomePage.vue';
+import HomePage from '../pages/HomePage.vue';
 // import NotFound404 from "@/pages/NotFound404.vue";
 // import BlogPage from "@/pages/BlogPage.vue";
 // import Articles from "@/pages/ArticlesPage.vue";
-const HomePage = () => import('@/pages/HomePage.vue');
+// const HomePage = () => import('@/pages/HomePage.vue');
 const Articles = () => import('@/pages/ArticlesPage.vue');
 const ArticlePage = () => import('@/pages/ArticlePage.vue');
 const NotFound404 = () => import('@/pages/NotFound404.vue');

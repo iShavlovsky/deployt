@@ -15,6 +15,12 @@
             <p class="text-base-down1">Transform your ideas into digital realities with our skilled team, delivering
               cutting-edge solutions with precision and passion.
             </p>
+            <UIButton :btnDestination="3"
+                      :btnType="'stroke-button'"
+                      :title="'ААААА'"/>
+            <UIButton :btnDestination="3"
+                      :btnType="'stroke-button'"
+                      :title="'ААААА'"/>
             <a href="#"
                class="main-header_btn-link-w">
               <span>Let's make some wild stuff</span>
@@ -125,7 +131,7 @@
                          :imgAlt="articles.imgAlt"
                          :heading="articles.heading"
                          :description="articles.description"
-                         :artbody="articles.artbody"/>
+          />
         </div>
       </div>
     </div>
@@ -138,13 +144,45 @@ import {computed, inject} from 'vue';
 import UIAccordion from '@/components/GlobalLibrary/UIAccordion.vue';
 import UIOurWorkCard from '@/components/GlobalLibrary/UIOurWorkCard.vue';
 import UIArticleCard from '@/components/GlobalLibrary/UIArticleCard.vue';
+import UIButton from '@/components/GlobalLibrary/UIButton.vue';
 
 const stores = inject('$stores');
-await stores.content.load('homePage');
+const content = ['heading', 'description', 'slug', 'link'];
+const image = {fields: ['name', 'alternativeText', 'url', "formats"]};
+
+
+const requests = {
+  'what-we-dos': {
+    sort: 'createdAt:desc',
+    fields: content
+  },
+  'tech-stacks': {
+    sort: 'createdAt:desc',
+    fields: content
+  },
+  'accomplished-projects': {
+    sort: 'createdAt:desc',
+    fields: content,
+    populate: {
+      img: image
+    }
+  },
+  'articles-to-reads': {
+    sort: 'createdAt:desc',
+    pagination: {
+      limit: 3
+    },
+    fields: content,
+    populate: {
+      thumbnail: image
+    }
+  }
+};
+
+await stores.content.load(requests);
 
 const contentStore = computed(() => stores.content);
 const seoStore = computed(() => stores.seo);
-
 
 const whatWeDos = computed(() => contentStore.value.item('what-we-dos'));
 const techStacks = computed(() => contentStore.value.item('tech-stacks'));
@@ -197,7 +235,8 @@ seoStore.value.setPage('We are software engineers',
 
   .text-heading-up4 {
     color: $c-primary-black;
-    
+    @include m-main-h1();
+
     span {
       color: $c-primary-white;
       white-space: nowrap;
@@ -229,6 +268,7 @@ seoStore.value.setPage('We are software engineers',
     }
   }
 }
+
 
 .content-w {
 

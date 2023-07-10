@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import useWindowSizes from "@/composables/useWindowSizes.js";
+import useBreakpointsCheck from '@/composables/useBreakpointsCheck.js';
 import {computed} from "vue";
 const props = defineProps({
   iconName: {
@@ -35,24 +35,12 @@ const props = defineProps({
     default: 'currentColor'
   }
 })
-const screenSize = () => {
-  let size = 'em';
-  let factor = 16;
-  const sizes = useWindowSizes()
-  const width = sizes.vw
+const screenSize = useBreakpointsCheck()
 
-  if (width < 480) {
-    size = 'px';
-    factor = 1;
-  }
-
-  return {size, factor};
-}
-console.log()
 const aspectRatio = props.iconWidth / props.iconHeight;
 const viewBox = computed(() => (`0 0 ${props.iconWidth} ${props.iconWidth / aspectRatio}`));
-const wrapWidth = computed(() => (`${props.iconWidth / screenSize().factor}${screenSize().size}`));
-const wrapHeight = computed(() => (`${props.iconHeight / screenSize().factor}${screenSize().size}`));
+const wrapWidth = computed(() => (`${props.iconWidth / screenSize.factor}${screenSize.size}`));
+const wrapHeight = computed(() => (`${props.iconHeight / screenSize.factor}${screenSize.size}`));
 
 </script>
 

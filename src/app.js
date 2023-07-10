@@ -4,7 +4,6 @@ import createApiPlugin from '@/api/index.js';
 import createStoresPlugin from '@/store/index.js';
 import createRouter from '@/router/index.js';
 import seoTagsConnector from '@/connectors/seo-tags.js'
-import createLazyloadPlugin from '@/plugins/vueLazyload.js';
 import httpAlertsConnector from '@/connectors/http-alerts.js';
 
 import {createApp, createSSRApp} from 'vue'
@@ -37,7 +36,6 @@ export default async (isSsr = false) => {
     components.forEach(component => {
         app.component(component.__name, component);
     });
-    createLazyloadPlugin(app, isSsr);
 
     app.use(createPinia());
     app.use(router);
@@ -45,10 +43,8 @@ export default async (isSsr = false) => {
     app.use(apiPlugin);
     app.use(storesPlugin);
 
-
     app.provide('isSsr', isSsr);
     app.provide('$storage', storage);
-
 
     if(!isSsr){
         seoTagsConnector(stores.seo, document);

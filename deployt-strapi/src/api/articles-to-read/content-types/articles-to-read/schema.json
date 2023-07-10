@@ -46,7 +46,7 @@
       "type": "customField",
       "options": {
         "output": "HTML",
-        "preset": "rich"
+        "preset": "standard"
       },
       "customField": "plugin::ckeditor.CKEditor"
     },
@@ -60,12 +60,17 @@
       "targetField": "heading",
       "required": true
     },
-    "body2": {
+    "articleBody2": {
       "type": "customField",
       "options": {
         "preset": "toolbar"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "head": {
+      "type": "component",
+      "repeatable": false,
+      "component": "test.heading"
     }
   }
 }
